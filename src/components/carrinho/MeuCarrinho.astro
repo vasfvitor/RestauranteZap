@@ -1,5 +1,7 @@
 ---
-import Etapa1 from './Etapa1.astro';
+import Etapa1 from '@/components/carrinho/Etapa1.astro';
+import Etapa2 from '@/components/carrinho/Etapa2.astro';
+import Etapa3 from '@/components/carrinho/Etapa3.astro';
 ---
 
 <script is:inline>
@@ -27,22 +29,23 @@ function closeModal() {
 <!-- MODAL: -->
 <dialog id="meuCarrinho" class="modal">
   <div class="modal-box rounded-none max-h-none max-w-none w-full h-screen p-0 m-0">
-    <div class="container">
+    <div class="container py-8">
       <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
       <div>
         <div class="flex justify-between">
           <ul class="steps">
             <!-- Passos step-primary -->
-            <li class="step step-primary"></li>
-            <li class="step"></li>
-            <li class="step"></li>
+
+            <li id="passo1" class="step step-primary"></li>
+            <li id="passo2" class="step"></li>
+            <li id="passo3" class="step"></li>
           </ul>
           <div class="modal-action m-0">
             <form method="dialog">
               <!-- Fechar o modal (carrinho)-->
               <button onclick="closeModal()" class="btn">Fechar</button>
             </form>
-            <!-- Fechar o modal com botão ESC ou clicando fora do modal -->
+            <!-- Fechar com botão ESC -->
             <form method="dialog" class="modal-backdrop">
               <button>close</button>
             </form>
@@ -52,6 +55,26 @@ function closeModal() {
       </div>
       <!-- Corpo do Modal -->
       <Etapa1 />
+      <Etapa2 />
+      <Etapa3 />
     </div>
   </div>
 </dialog>
+
+<script is:inline>
+function CarregarEtapa(etapa) {
+  // Loop através das etapas de 1 a 3
+  for (let i = 1; i <= 3; i++) {
+    const etapaElement = document.getElementById(`etapa${i}`);
+
+    // Verifica se é a etapa atual
+    if (i === etapa) {
+      etapaElement.classList.remove('hidden');
+      etapaElement.classList.add('flex');
+    } else {
+      etapaElement.classList.remove('flex');
+      etapaElement.classList.add('hidden');
+    }
+  }
+}
+</script>
