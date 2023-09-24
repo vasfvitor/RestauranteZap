@@ -4,7 +4,7 @@ Pq usar Astro? O Astro é uma framework JS
 
 O objetivo de usar ele é facilitar a edição e manutenção do código.
 
-Exemplo: Quero alterar o cardápio. No projeto original do curso o cardapio é escrito direto na página. Porém nesse projeto o cardapio é uma junção de dois arquvios. Um arquivo tem os dados do cardapio e outro tem a lógica. Se eu quiser alterar os dados eu posso facilmente abrir o arquivo cardapio.json e editar, acrescentar ou remover qualquer componente sem precisar alterar o código.
+Exemplo: Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página.
 
 
 ## Estrutura do projeto
@@ -51,7 +51,14 @@ exemplo:
 
 ## Tailwind e DaisyUI
 
-No caso foi decisão pessoal, no curso o cara usa o Bootstrap. Que é uma biblioteca CSS. O Tailwind também é, porém ele não tem componentes prontos. Por isso acrescentei o DaisyUI pra facilitar a parte dos componentes. Só visitar [https://daisyui.com/ ](https://daisyui.com/components/?lang=pt) escolher o componente necessário, copiar o código e colar num novo componente ou página astro. Daí customiza.
+No caso foi decisão pessoal, no curso o cara usa o Bootstrap e escreve CSS.
+
+O Tailwind facilita escrever o css sem precisar usar um arquivo .css. Não existe `btn` como existe no Bootstrap. O Tailwind é uma biblioteca de css utilitário; O Bootstrap é baseado em componentes.
+
+[Documentação Tailwind CSS](https://tailwindcss.com/docs/)
+
+ Pra facilitar o processo acrescentei o DaisyUI que tem componentes prontos como teria no Bootstrap. Só visitar [esse link ](https://daisyui.com/components/?lang=pt) escolher o componente desejado, copiar o código, e colar num novo componente ou página astro. Daí customiza.
+
 
 # Astro Starter Kit: Minimal
 
