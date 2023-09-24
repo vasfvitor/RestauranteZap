@@ -42,10 +42,16 @@ Componentes são pedaços de código que vai formar a página, pode ser desde um
 
 Exemplos:
 
+
 blog.astro -> página
+
 index.astro -> página
+
 Carrinho.astro -> componente
+
 Button.astro -> componente
+
+
 
 ## Estrutura dos componentes e pagina astro:
 
