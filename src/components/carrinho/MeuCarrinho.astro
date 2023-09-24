@@ -2,21 +2,9 @@
 import Etapa1 from '@/components/carrinho/Etapa1.astro';
 import Etapa2 from '@/components/carrinho/Etapa2.astro';
 import Etapa3 from '@/components/carrinho/Etapa3.astro';
+
+import { Icon } from 'astro-icon';
 ---
-
-<script is:inline>
-// Script pra fechar e abrir o modal
-function openModal() {
-  const meuCarrinho = document.getElementById('meuCarrinho');
-  meuCarrinho.showModal();
-  document.body.classList.add('modal-open');
-}
-
-function closeModal() {
-  const meuCarrinho = document.getElementById('meuCarrinho');
-  document.body.classList.remove('modal-open');
-}
-</script>
 
 <style>
   body.modal-open {
@@ -24,8 +12,8 @@ function closeModal() {
   }
 </style>
 
-<!-- You can open the modal using ID.showModal() method -->
-<button class="btn" onclick="openModal()">Meu Carrinho</button>
+<!-- Botão para abrir o carrinho -->
+<button class="btn" onclick="openModal()">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></button>
 <!-- MODAL: -->
 <dialog id="meuCarrinho" class="modal">
   <div class="modal-box rounded-none max-h-none max-w-none w-full h-screen p-0 m-0">
@@ -76,5 +64,19 @@ function CarregarEtapa(etapa) {
       etapaElement.classList.add('hidden');
     }
   }
+}
+</script>
+
+<script is:inline>
+// Script pra fechar e abrir o modal
+function openModal() {
+  const meuCarrinho = document.getElementById('meuCarrinho');
+  meuCarrinho.showModal();
+  document.body.classList.add('modal-open');
+}
+
+function closeModal() {
+  const meuCarrinho = document.getElementById('meuCarrinho');
+  document.body.classList.remove('modal-open');
 }
 </script>
