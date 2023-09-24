@@ -6,7 +6,12 @@ Pq usar Astro? O Astro é uma framework JS
 O objetivo de usar ele é facilitar a edição e manutenção do código.
 
 
-Exemplo: Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página.
+Exemplo: Olhando os arquivos fica fácil de localizar cada seção das página pois cada uma tem um arquivo próprio que ao final o Astro junta tudo pra formar o site final. O rodapé tem o arquivo `Footer.astro`, o cardápio `Cardapio.astro`. 
+
+O Astro (assim como os framework javascript) automaticamente
+
+
+Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página. 
 
 
 ## Estrutura do projeto
