@@ -12,10 +12,10 @@ import { DADOS } from '@/consts';
     <h1>Escolha sua <br /> comida <span class="text-yellow-500">favorita.</span></h1>
     <p>Aproveite nosso cardápio! Escolha o que desejar e <br /> receba em sua casa de forma rápida e segura.</p>
     <div class="gap-4 flex">
-      <button class="btn btn-primary">Ver cardápio</button>
-      <button class="btn">
+      <a href="#cardapio" class="btn btn-primary">Ver cardápio</a>
+      <a href={DADOS.social.whatsapp} class="btn">
         <Icon class="h-6 w-6" name="mdi:phone" />{DADOS.telefone}
-      </button>
+      </a>
     </div>
     <div class="mt-20 gap-4 flex flex-row">
       <a href=`${DADOS.social.instagram}` class="btn btn-square btn-sm p-1">
