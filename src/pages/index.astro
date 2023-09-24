@@ -1,32 +1,17 @@
 ---
-import { SITE_TITLE } from '../consts';
+import Head from '@/layout/Head.astro';
+import Layout from '@/layout/PageLayout.astro';
 import Navbar from '@/components/Navbar.astro';
 import Hero from '@/components/Hero.astro';
-
-import '@fontsource/poppins/200.css';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/600.css';
 ---
 
-<style>
-  body {
-    font-family: 'Poppins', sans-serif;
-  }
-</style>
-
 <html lang="pt-br" class="bg-orange-50">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{SITE_TITLE}</title>
-  </head>
-  <body>
+  <Head />
+  <Layout>
     <header class="container"><Navbar /></header>
     <main class="py-20">
-     <Hero></Hero>
+      <Hero />
     </main>
-  </body>
+  </Layout>
   <footer><section class="container">footer</section></footer>
 </html>

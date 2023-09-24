@@ -1,0 +1,21 @@
+---
+import '@fontsource/poppins/200.css';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/600.css';
+
+import Head from '@/layout/Head.astro';
+import Footer from '@/layout/Footer.astro';
+---
+
+<style>
+  body {
+    font-family: 'Poppins', sans-serif;
+  }
+</style>
+<html lang="pt-br" class="bg-orange-50">
+  <Head />
+  <body>
+    <slot />
+    <Footer />
+  </body>
+</html>
