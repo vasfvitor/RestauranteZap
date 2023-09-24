@@ -6,12 +6,6 @@ import Etapa3 from '@/components/carrinho/Etapa3.astro';
 import { Icon } from 'astro-icon';
 ---
 
-<style>
-  body.modal-open {
-    overflow: hidden;
-  }
-</style>
-
 <!-- Botão para abrir o carrinho -->
 <button class="btn" onclick="openModal()">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></button>
 <!-- MODAL: -->
@@ -20,7 +14,7 @@ import { Icon } from 'astro-icon';
     <div class="container py-8">
       <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
       <div>
-        <div class="flex justify-between">
+        <div class="flex md:justify-between text-center flex-col-reverse md:flex-row">
           <ul class="steps">
             <!-- Passos step-primary -->
 
@@ -28,8 +22,8 @@ import { Icon } from 'astro-icon';
             <li id="passo2" class="step"></li>
             <li id="passo3" class="step"></li>
           </ul>
-          <div class="modal-action m-0">
-            <form method="dialog">
+          <div class="mb-8 mx-auto md:m-0">
+            <form method="dialog" class="">
               <!-- Fechar o modal (carrinho)-->
               <button onclick="closeModal()" class="btn">Fechar</button>
             </form>
@@ -41,7 +35,7 @@ import { Icon } from 'astro-icon';
         </div>
         <h3 class="prose md:prose-lg font-black">Seu carrinho:</h3>
       </div>
-      <!-- Corpo do Modal -->
+      <!-- Corpo do Modal que será ativado de acordo com o script abaixo -->
       <Etapa1 />
       <Etapa2 />
       <Etapa3 />
@@ -50,25 +44,35 @@ import { Icon } from 'astro-icon';
 </dialog>
 
 <script is:inline>
-function CarregarEtapa(etapa) {
-  // Loop através das etapas de 1 a 3
+// Função chamada no componente Etapa*.astro
+function CarregarEtapa(proxEtapa) {
+  // Loop etapas
   for (let i = 1; i <= 3; i++) {
-    const etapaElement = document.getElementById(`etapa${i}`);
-
+    // Para ativar o layout da etapa 1, 2 e 3
+    const etapaCarrinho = document.getElementById(`etapa${i}`);
     // Verifica se é a etapa atual
-    if (i === etapa) {
-      etapaElement.classList.remove('hidden');
-      etapaElement.classList.add('flex');
+    if (i === proxEtapa) {
+      etapaCarrinho.classList.remove('hidden');
+      etapaCarrinho.classList.add('flex');
     } else {
-      etapaElement.classList.remove('flex');
-      etapaElement.classList.add('hidden');
+      etapaCarrinho.classList.remove('flex');
+      etapaCarrinho.classList.add('hidden');
+    }
+
+    // Para o indicador de etapa 1, 2 e 3
+    const passoIndicador = document.getElementById(`passo${i}`);
+    // Verifica se é a etapa atual ou anterior
+    if (i <= proxEtapa) {
+      passoIndicador.classList.add('step-primary');
+    } else {
+      passoIndicador.classList.remove('step-primary');
     }
   }
 }
 </script>
 
 <script is:inline>
-// Script pra fechar e abrir o modal
+// Script pra fechar e abrir o modal, e remover o scroll do body
 function openModal() {
   const meuCarrinho = document.getElementById('meuCarrinho');
   meuCarrinho.showModal();
@@ -80,3 +84,9 @@ function closeModal() {
   document.body.classList.remove('modal-open');
 }
 </script>
+
+<style>
+  body.modal-open {
+    overflow: hidden;
+  }
+</style>
