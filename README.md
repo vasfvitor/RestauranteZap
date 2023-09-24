@@ -2,7 +2,9 @@
 
 Pq usar Astro? O Astro é uma framework JS
 
+
 O objetivo de usar ele é facilitar a edição e manutenção do código.
+
 
 Exemplo: Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página.
 
@@ -13,16 +15,22 @@ Esses arquivos solto na raiz do projeto são apenas de configuração, nao preci
 
 na pasta:
 /src/components - fica os componentes
+
 /src/images - fica as imagens e outros assets visuais como icones, background...
+
 /src/layout - é o layout html geral
-/src/pages - são as páginas. A pagima principal do site index.astro é o equivalente do index.html. Pode organizar as paginas em varios arquivos mas também em pastas
+
+/src/pages - são as páginas. A pagima principal do site index.astro é o equivalente
+do index.html. Pode organizar as paginas em varios arquivos mas também em pastas
 
 Exemplo:
 
 1 - www.exemplo.com.br/comprar/passo1
+
 Ficaria em arquivos: /src/pages/comprar/passo1.astro - veja que foi criado uma pasta chamada "comprar".
 
 2 - www.exemplo.com.br/comprar
+
 Pode ser feito com /src/pages/comprar/index.astro ou /src/pages/comprar.astro
 A opção com pasta é melhor caso tenha várias páginas no /comprar como é o caso do exemplo 1.
 
