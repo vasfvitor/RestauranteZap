@@ -7,7 +7,7 @@ import { Icon } from 'astro-icon';
 ---
 
 <!-- Botão para abrir o carrinho -->
-<button class="btn" onclick="openModal()">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></button>
+<button class="btn abrir">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></button>
 <!-- MODAL: -->
 <dialog id="meuCarrinho" class="modal">
   <div class="modal-box rounded-none max-h-none max-w-none w-full h-screen p-0 m-0">
@@ -25,7 +25,7 @@ import { Icon } from 'astro-icon';
           <div class="mb-8 mx-auto md:m-0">
             <form method="dialog" class="">
               <!-- Fechar o modal (carrinho)-->
-              <button onclick="closeModal()" class="btn">Fechar</button>
+              <button class="btn fechar">Fechar</button>
             </form>
             <!-- Fechar com botão ESC -->
             <form method="dialog" class="modal-backdrop">
@@ -35,20 +35,43 @@ import { Icon } from 'astro-icon';
         </div>
         <h3 class="prose md:prose-lg font-black">Seu carrinho:</h3>
       </div>
+      <!--x-->
       <!-- Corpo do Modal que será ativado de acordo com o script abaixo -->
       <Etapa1 />
       <Etapa2 />
       <Etapa3 />
+      <!--x-->
     </div>
   </div>
 </dialog>
 
 <script is:inline>
+// Selecione os botões das etapas
+
+const btnEtapa1 = document.getElementById('btnEtapa1');
+const btnEtapa2 = document.getElementById('btnEtapa2');
+const btnEtapa3 = document.getElementById('btnEtapa3');
+
+// Adicione event listeners a cada botão
+btnEtapa1.addEventListener('click', () => {
+  CarregarEtapa(1);
+});
+
+btnEtapa2.addEventListener('click', () => {
+  CarregarEtapa(2);
+});
+
+btnEtapa3.addEventListener('click', () => {
+  CarregarEtapa(3);
+});
+
 // Função chamada no componente Etapa*.astro
-function CarregarEtapa(proxEtapa) {
+function CarregarEtapa() {
+  const proxEtapa = this.target.getAttribute('data-etapa');
+  console.log(3);
   // Loop etapas
   for (let i = 1; i <= 3; i++) {
-    // Para ativar o layout da etapa 1, 2 e 3
+    // Ativa o layout da etapa 1, 2 e 3
     const etapaCarrinho = document.getElementById(`etapa${i}`);
     // Verifica se é a etapa atual
     if (i === proxEtapa) {
@@ -59,7 +82,7 @@ function CarregarEtapa(proxEtapa) {
       etapaCarrinho.classList.add('hidden');
     }
 
-    // Para o indicador de etapa 1, 2 e 3
+    // Seta indicador de etapa 1, 2 e 3
     const passoIndicador = document.getElementById(`passo${i}`);
     // Verifica se é a etapa atual ou anterior
     if (i <= proxEtapa) {
@@ -72,6 +95,22 @@ function CarregarEtapa(proxEtapa) {
 </script>
 
 <script is:inline>
+// seleciona todos os botões com a classe abrir
+const btnAbrirModal = document.querySelectorAll('button.abrir');
+
+btnAbrirModal.forEach((button) => {
+  button.addEventListener('click', () => {
+    openModal();
+  });
+});
+
+// seleciona todos os botões com a classe fechar
+const btnFecharModal = document.querySelectorAll('button.fechar');
+btnFecharModal.forEach((button) => {
+  button.addEventListener('click', () => {
+    closeModal();
+  });
+});
 // Script pra fechar e abrir o modal, e remover o scroll do body
 function openModal() {
   const meuCarrinho = document.getElementById('meuCarrinho');
