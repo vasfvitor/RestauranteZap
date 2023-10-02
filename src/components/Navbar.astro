@@ -1,50 +1,50 @@
 ---
 import { Icon } from 'astro-icon';
-import MeuCarrinho from './carrinho/MeuCarrinho.astro';
 
 const menu = [
-  { nome: 'Reservas', texto: 'reservas' },
-  { nome: 'Serviços', texto: 'servicos' },
-  { nome: 'Cardápio', texto: 'cardapio' },
-  { nome: 'Depoimentos', texto: 'depoimentos' },
+    { nome: 'Reservas', texto: 'reservas' },
+    { nome: 'Serviços', texto: 'servicos' },
+    { nome: 'Cardápio', texto: 'cardapio' },
+    { nome: 'Depoimentos', texto: 'depoimentos' },
 ];
 const name = 'Cardapio Online';
-
 ---
 
 <header class="container">
-  <div class="navbar">
-    <div class="navbar-start">
-      <div class="dropdown">
-        <label tabindex="0" class="btn btn-ghost lg:hidden">
-          <Icon class="h-6 w-6" name="mdi:cart" />
-        </label>
-        <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-          {
-            menu.map((item) => (
-              <li class="font-bold">
-                <a href={`#${item.texto}`}>{item.nome}</a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-      <a class="btn btn-ghost normal-case text-xl">{name}</a>
+    <div class="navbar">
+        <div class="navbar-start">
+            <div class="dropdown">
+                <label tabindex="0" class="btn btn-ghost lg:hidden">
+                    <Icon class="h-6 w-6" name="mdi:cart" />
+                </label>
+                <ul
+                    tabindex="0"
+                    class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                    {
+                        menu.map((item) => (
+                            <li class="font-bold">
+                                <a href={`#${item.texto}`}>{item.nome}</a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+            <a class="btn btn-ghost normal-case text-xl">{name}</a>
+        </div>
+        <div class="navbar-center hidden lg:flex">
+            <ul class="menu menu-horizontal px-1">
+                {
+                    menu.map((item) => (
+                        <li class="font-bold">
+                            <a href={`#${item.texto}`}>{item.nome}</a>
+                        </li>
+                    ))
+                }
+            </ul>
+        </div>
+        <div class="navbar-end">
+            <a href="/passo/1" class="btn">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></a>
+        </div>
     </div>
-    <div class="navbar-center hidden lg:flex">
-      <ul class="menu menu-horizontal px-1">
-        {
-          menu.map((item) => (
-            <li class="font-bold">
-              <a href={`#${item.texto}`}>{item.nome}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-    <div class="navbar-end">
-      <MeuCarrinho />
-      
-    </div>
-  </div>
 </header>

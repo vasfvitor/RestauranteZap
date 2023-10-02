@@ -2,17 +2,13 @@
 
 Pq usar Astro? O Astro é uma framework JS
 
-
 O objetivo de usar ele é facilitar a edição e manutenção do código.
 
-
-Exemplo: Olhando os arquivos fica fácil de localizar cada seção das página pois cada uma tem um arquivo próprio que ao final o Astro junta tudo pra formar o site final. O rodapé tem o arquivo `Footer.astro`, o cardápio `Cardapio.astro`. 
+Exemplo: Olhando os arquivos fica fácil de localizar cada seção das página pois cada uma tem um arquivo próprio que ao final o Astro junta tudo pra formar o site final. O rodapé tem o arquivo `Footer.astro`, o cardápio `Cardapio.astro`.
 
 O Astro (assim como os framework javascript) automaticamente
 
-
-Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página. 
-
+Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página.
 
 ## Estrutura do projeto
 
@@ -39,14 +35,13 @@ Ficaria em arquivos: /src/pages/comprar/passo1.astro - veja que foi criado uma p
 Pode ser feito com /src/pages/comprar/index.astro ou /src/pages/comprar.astro
 A opção com pasta é melhor caso tenha várias páginas no /comprar como é o caso do exemplo 1.
 
-
 ## Convenção:
+
 Componentes sempre escrito com a primeira letra maiscula. E páginas, letra minuscula.
 
 Componentes são pedaços de código que vai formar a página, pode ser desde um botão até uma seção inteira.
 
 Exemplos:
-
 
 blog.astro -> página
 
@@ -55,8 +50,6 @@ index.astro -> página
 Carrinho.astro -> componente
 
 Button.astro -> componente
-
-
 
 ## Estrutura dos componentes e pagina astro:
 
@@ -76,8 +69,7 @@ O Tailwind facilita escrever o css sem precisar usar um arquivo .css. Não exist
 
 [Documentação Tailwind CSS](https://tailwindcss.com/docs/)
 
- Pra facilitar o processo acrescentei o DaisyUI que tem componentes prontos como teria no Bootstrap. Só visitar [esse link ](https://daisyui.com/components/?lang=pt) escolher o componente desejado, copiar o código, e colar num novo componente ou página astro. Daí customiza.
-
+Pra facilitar o processo acrescentei o DaisyUI que tem componentes prontos como teria no Bootstrap. Só visitar [esse link ](https://daisyui.com/components/?lang=pt) escolher o componente desejado, copiar o código, e colar num novo componente ou página astro. Daí customiza.
 
 # Astro Starter Kit: Minimal
 
@@ -104,8 +96,8 @@ Any static assets, like images, can be placed in the `public/` directory.
 
 All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
+| Command                    | Action                                           |
+| :------------------------- | :----------------------------------------------- |
 | `pnpm install`             | Installs dependencies                            |
 | `pnpm run dev`             | Starts local dev server at `localhost:4321`      |
 | `pnpm run build`           | Build your production site to `./dist/`          |

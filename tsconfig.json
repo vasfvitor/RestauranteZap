@@ -1,10 +1,13 @@
 {
-  "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
+    "extends": "astro/tsconfigs/strict",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "~/*": ["src/*"],
+            "@/*": ["src/*"],
+            
+        },
+        "strictNullChecks": true
     },
-    "strictNullChecks": true
-  }
+    "exclude": ["node_modules/"]
 }

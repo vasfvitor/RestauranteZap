@@ -1,0 +1,25 @@
+---
+
+---
+
+<div class="container py-8">
+    <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
+    <div>
+        <div class="flex md:justify-between text-center flex-col-reverse md:flex-row">
+            <!-- Passos step-primary -->
+            <slot name="passo" />
+
+            <div class="mb-8 mx-auto md:m-0">
+                <!-- Fechar o modal (carrinho)-->
+                <a href="/" class="btn">Fechar</a>
+
+                <!-- Fechar com botão ESC -->
+            </div>
+        </div>
+        <h3 class="prose md:prose-lg font-black">Seu carrinho:</h3>
+    </div>
+    <slot />
+    <!--x-->
+    <!-- Corpo do Modal que será ativado de acordo com o script abaixo -->
+</div>
+<!--x-->
