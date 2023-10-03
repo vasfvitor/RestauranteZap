@@ -1,5 +1,5 @@
 <script>
-  import { isCartOpen, cartItems } from '@/utils/cartStore';
+  import { isCartOpen, cartItems } from '~/components/Svelte/cartStore';
 </script>
 
 {#if $isCartOpen}

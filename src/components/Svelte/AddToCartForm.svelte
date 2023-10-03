@@ -3,17 +3,19 @@
 </form>
 
 <script>
-  import { addCartItem, isCartOpen } from '@/utils/cartStore';
+  import { addCartItem, isCartOpen } from '~/components/Svelte/cartStore';
+  export let itemId;
+  export let itemName; 
 
   // we'll hardcode the item info for simplicity!
-  const hardcodedItemInfo = {
-    id: 'astronaut-figurine',
-    name: 'Astronaut Figurine',
+  let ItemInfo = {
+    id: itemId,
+    name: itemName,
     imageSrc: '/images/astronaut-figurine.png',
   }
 
   function addToCart() {
     isCartOpen.set(true);
-    addCartItem(hardcodedItemInfo);
+    addCartItem(ItemInfo);
   }
 </script>
