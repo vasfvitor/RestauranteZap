@@ -12,9 +12,11 @@
         "format": "prettier --write . --plugin=prettier-plugin-astro"
     },
     "dependencies": {
+        "@astrojs/prefetch": "^0.4.0",
         "@astrojs/svelte": "^4.0.2",
         "@astrojs/tailwind": "^5.0.0",
         "@fontsource/poppins": "^5.0.8",
+        "@nanostores/persistent": "^0.9.1",
         "animate.css": "^4.1.1",
         "astro": "^3.2.2",
         "nanostores": "^0.9.3",
@@ -28,7 +30,8 @@
         "astro-icon": "^0.8.1",
         "daisyui": "^3.8.3",
         "prettier": "^3.0.3",
-        "prettier-plugin-astro": "^0.12.0"
+        "prettier-plugin-astro": "^0.12.0",
+        "prettier-plugin-svelte": "^3.0.3"
     },
     "engines": {
         "node": ">=18.14.1"

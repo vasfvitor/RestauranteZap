@@ -31,7 +31,7 @@ import AddToCartForm from '~/components/Svelte/AddToCartForm.svelte';
         {
             Object.keys(Menu).map((category) => (
                 <div id={category}>
-                    <div class="justify-center flex flex-row flex-wrap gap-4">
+                    <div class="justify-center flex flex-row flex-wrap gap-4 md:gap-8">
                         {Menu[category].map((item, i) => (
                             <div
                                 id={`item-${i}`}
@@ -59,7 +59,12 @@ import AddToCartForm from '~/components/Svelte/AddToCartForm.svelte';
                                     <div class="card-actions justify-end">
                                         <div class="text-yellow-500 font-bold">
                                             <p>R${item.price}</p>
-                                            <AddToCartForm itemId={item.id} itemName={item.name} client:load>
+                                            <AddToCartForm
+                                                itemPrice={item.price}
+                                                itemId={item.id}
+                                                itemName={item.name}
+                                                client:load
+                                            >
                                                 <button type="submit">Add to cart</button>
                                             </AddToCartForm>
                                         </div>

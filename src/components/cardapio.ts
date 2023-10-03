@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', (e) => {
+document.addEventListener('astro:page-load', (e) => {
     console.log('RUN');
     const maxItems = 6;
     const loadItems = 4;
@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     loadMore?.addEventListener('click', function () {
         [].forEach.call(categoryWrapper?.querySelectorAll('.hidden'), function (item, i) {
             // console.log(currFilter);
-
+            console.log(i);
             if (i < loadItems) {
                 item.classList.remove('hidden');
             }
