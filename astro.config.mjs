@@ -1,10 +1,12 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
-import svelte from '@astrojs/svelte';
-
 import path from 'path';
 import { fileURLToPath } from 'url';
+
+import svelte from '@astrojs/svelte';
+import tailwind from '@astrojs/tailwind';
+
+import { defineConfig } from 'astro/config';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 
 // https://astro.build/config
 export default defineConfig({

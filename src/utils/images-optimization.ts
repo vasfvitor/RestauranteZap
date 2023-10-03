@@ -1,4 +1,6 @@
 import { getImage } from 'astro:assets';
+import { transformUrl, parseUrl } from 'unpic';
+
 import type { ImageMetadata } from 'astro';
 import type { HTMLAttributes } from 'astro/types';
 
@@ -225,6 +227,32 @@ export const astroAsseetsOptimizer: ImagesOptimizer = async (image, breakpoints)
 };
 
 /* ** */
+export const unpicOptimizer: ImagesOptimizer = async (image, breakpoints, width, height) => {
+    if (!image || typeof image !== 'string') {
+        return [];
+    }
+
+    const urlParsed = parseUrl(image);
+    if (!urlParsed) {
+        return [];
+    }
+
+    return Promise.all(
+        breakpoints.map(async (w: number) => {
+            const url =
+                (await transformUrl({
+                    url: image,
+                    width: w,
+                    height: width && height ? computeHeight(w, width / height) : height,
+                    cdn: urlParsed.cdn,
+                })) || image;
+            return {
+                src: String(url),
+                width: w,
+            };
+        })
+    );
+};
 
 /* ** */
 export async function getImagesOptimized(

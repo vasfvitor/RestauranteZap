@@ -23,7 +23,6 @@ console.log('Reloaded');
 //  <img src={item.img} alt="x" />
 
 const limit = 4;
-
 ---
 
 <Section id="cardapio">
@@ -35,6 +34,7 @@ const limit = 4;
             ))
         }
     </div>
+
     <div class="menu-item-wrapper">
         {
             Object.keys(Menu).map((category) => (
@@ -53,7 +53,6 @@ const limit = 4;
                                         src={item.img}
                                         alt="i"
                                     />
-                                 
                                 </figure>
                                 <div class="card-body">
                                     <h2 class="card-title">
@@ -140,9 +139,8 @@ const limit = 4;
             };
         </script>
     </div>
-   
+
     <div class="text-center my-8">
         <button class="btn btn-primary" id="loadMore">Ver mais</button>
     </div>
 </Section>
-

@@ -1,12 +1,11 @@
 import { getImage } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-//import type { OpenGraph } from '@astrolib/seo';
 
 const load = async function () {
     let images: Record<string, () => Promise<unknown>> | undefined = undefined;
     try {
         images = import.meta.glob(
-            '~/assets/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}'
+            '~/assets/images/**/*.{jpeg,jpg,png,tiff,webp,gif,svg,JPEG,JPG,PNG,TIFF,WEBP,GIF,SVG}'
         );
     } catch (e) {
         // continue regardless of error
@@ -49,7 +48,7 @@ export const findImage = async (
         : null;
 };
 
-/** 
+/**
 export const adaptOpenGraphImages = async (
   openGraph: OpenGraph = {},
   astroSite: URL | undefined = new URL('')
@@ -98,4 +97,4 @@ export const adaptOpenGraphImages = async (
   );
 
   return { ...openGraph, ...(adaptedImages ? { images: adaptedImages } : {}) };
-};*/
+}; */
