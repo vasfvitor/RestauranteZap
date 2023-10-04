@@ -30,7 +30,7 @@ document.addEventListener('astro:page-load', (e) => {
             categoryWrapper = document.getElementById(currFilter) as HTMLDivElement;
             items = categoryWrapper.querySelectorAll('.menu-item') as NodeListOf<HTMLDivElement>;
 
-            items?.forEach(function (item, i) {
+            items.forEach(function (item, i) {
                 //console.log(item.innerText, i);
                 if (i < maxItems - 1) {
                     item.classList.remove('hidden');
@@ -42,15 +42,15 @@ document.addEventListener('astro:page-load', (e) => {
             }
             loadMore.style.display = 'inline-flex';
             let lastCategoryWrapper = document.getElementById(lastFilter) as HTMLElement;
-            let oldItems = lastCategoryWrapper?.querySelectorAll('.menu-item') as NodeListOf<HTMLElement>;
+            let oldItems = lastCategoryWrapper.querySelectorAll('.menu-item') as NodeListOf<HTMLElement>;
 
-            oldItems?.forEach(function (item) {
+            oldItems.forEach(function (item) {
                 item.classList.add('hidden');
             });
         });
     });
 
-    items?.forEach(function (item, i) {
+    items.forEach(function (item, i) {
         //console.log(item.innerText, i);
         if (i < maxItems - 1) {
             item.classList.remove('hidden');
@@ -68,8 +68,7 @@ document.addEventListener('astro:page-load', (e) => {
         }
     }
 
-    // Event listener for the "load more" button
-    loadMore?.addEventListener('click', function () {
+    loadMore.addEventListener('click', function () {
         revealItems(loadItems);
     });
 });
