@@ -3,6 +3,7 @@
 
 export const SITE_TITLE = 'Menu Online';
 export const SITE_DESCRIPTION = 'Bem Vindo!';
+
 export const DADOS = {
     nome: 'Restaurante Exemplo',
     endereco: {
@@ -18,3 +19,11 @@ export const DADOS = {
         whatsapp: 'https://wa.me/',
     },
 };
+
+export const NAVBUTTONS = [
+    { name: 'Reservas', text: 'reservas' },
+    { name: 'Serviços', text: 'servicos' },
+    { name: 'Cardápio', text: 'cardapio' },
+    { name: 'Depoimentos', text: 'depoimentos' },
+];
+export const NAVTITLE = 'Cardapio Online';

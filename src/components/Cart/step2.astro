@@ -1,20 +1,11 @@
 ---
-import MeuCarrinho from '@/components/MeuCarrinho.astro';
+
 ---
 
-<MeuCarrinho>
-    <ul class="steps" slot="passo">
-        <!-- Passos - -->
-        <li id="passo1" class="step step-primary"></li>
-        <li id="passo2" class="step step-primary"></li>
-        <li id="passo3" class="step"></li>
-    </ul>
-
-    <section id="etapa2" class="flex border-y-2 flex-col py-2 my-2 border-gray-200">
-        <div>2</div>
-        <div slot="footer" class="flex gap-4 justify-end">
-            <a href="#passo1" class="btn btn-primary">Voltar</a>
-            <a href="#passo3" class="btn btn-primary">Revisar</a>
-        </div>
-    </section>
-</MeuCarrinho>
+<section id="etapa2" class="hidden flex border-y-2 flex-col py-2 my-2 border-gray-200">
+    <div>2</div>
+    <div class="flex gap-4 justify-end">
+        <button onclick="CarregarEtapa(1)" class="btn mr-4">Voltar</button>
+        <button onclick="CarregarEtapa(3)" class="btn-primary btn">Revisar</button>
+    </div>
+</section>

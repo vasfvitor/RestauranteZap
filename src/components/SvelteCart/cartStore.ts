@@ -10,15 +10,22 @@ export const isCartOpen = persistentAtom<boolean>(
     }
 );
 
-
+export const currStep = persistentAtom<number>(
+    'currStep', // key
+    0,
+    {
+        encode: JSON.stringify,
+        decode: JSON.parse,
+    }
+);
 
 export type CartItem = {
-    itemNum: number;
     id: string;
     name: string;
+    price: number;
     imageSrc: string;
     quantity: number;
-    price: number;
+    itemNum: number;
 };
 
 export const cartItems = persistentMap<Record<string, CartItem>>(
@@ -39,40 +46,40 @@ export let nextItemNum = persistentAtom<number>(
     }
 );
 
-type ItemDisplayInfo = Pick<CartItem, 'itemNum' | 'id' | 'name' | 'imageSrc' | 'price'>;
+type ItemDisplayInfo = Pick<CartItem, 'id' | 'name' | 'price' | 'imageSrc' | 'itemNum'>;
 
-export function manageCartItem({ itemNum, id, name, imageSrc, price }: ItemDisplayInfo, action: string) {
-    const existingEntry = cartItems.get()[id];
+export function manageCartItem({ id, name, imageSrc, itemNum, price }: ItemDisplayInfo, action: string) {
+    const currItem = cartItems.get()[id];
 
     if (action === 'add') {
-        if (existingEntry) {
+        if (currItem) {
             cartItems.setKey(id, {
-                ...existingEntry,
-                quantity: existingEntry.quantity + 1,
-                price: existingEntry.price + price,
+                ...currItem,
+                price: currItem.price + price,
+                quantity: currItem.quantity + 1,
             });
         } else {
             const next = nextItemNum.set(nextItemNum.get() + 1);
             cartItems.setKey(id, {
-                itemNum: next,
                 id,
                 name,
+                price,
                 imageSrc,
                 quantity: 1,
-                price,
+                itemNum: next,
             });
         }
-    } else if (action === 'remove' && existingEntry && cartItems.get()[id].quantity > 0) {
+    } else if (action === 'remove' && currItem && cartItems.get()[id].quantity > 0) {
         cartItems.setKey(id, {
-            ...existingEntry,
-            quantity: existingEntry.quantity - 1,
-            price: existingEntry.price - price,
+            ...currItem,
+            quantity: currItem.quantity - 1,
+            price: currItem.price - price,
         });
-    } else if (existingEntry && action === 'remove') {
+    } else if (currItem) {
         cartItems.setKey(id, {
-            ...existingEntry,
-            quantity: 0,
+            ...currItem,
             price: 0,
+            quantity: 0,
         });
     }
 }

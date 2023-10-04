@@ -1,21 +1,11 @@
 ---
 import { Icon } from 'astro-icon';
-import Step1 from './Cart/step1.astro';
-import Step2 from './Cart/step2.astro';
-import Step3 from './Cart/step3.astro';
 
-const menu = [
-    { nome: 'Reservas', texto: 'reservas' },
-    { nome: 'Serviços', texto: 'servicos' },
-    { nome: 'Cardápio', texto: 'cardapio' },
-    { nome: 'Depoimentos', texto: 'depoimentos' },
-];
-const name = 'Cardapio Online';
+import { NAVBUTTONS, NAVTITLE } from '@/utils/consts';
+
+import Carrinho from '~/components/Cart/Carrinho.astro';
 ---
 
-<Step1 />
-<Step2 />
-<Step3 />
 <header class="container">
     <div class="navbar">
         <div class="navbar-start">
@@ -28,29 +18,29 @@ const name = 'Cardapio Online';
                     class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
                 >
                     {
-                        menu.map((item) => (
+                        NAVBUTTONS.map((entry) => (
                             <li class="font-bold">
-                                <a href={`#${item.texto}`}>{item.nome}</a>
+                                <a href={`#${entry.text}`}>{entry.name}</a>
                             </li>
                         ))
                     }
                 </ul>
             </div>
-            <a class="btn btn-ghost normal-case text-xl">{name}</a>
+            <a class="btn btn-ghost normal-case text-xl">{NAVTITLE}</a>
         </div>
         <div class="navbar-center hidden lg:flex">
             <ul class="menu menu-horizontal px-1">
                 {
-                    menu.map((item) => (
+                    NAVBUTTONS.map((entry) => (
                         <li class="font-bold">
-                            <a href={`#${item.texto}`}>{item.nome}</a>
+                            <a href={`#${entry.text}`}>{entry.name}</a>
                         </li>
                     ))
                 }
             </ul>
         </div>
         <div class="navbar-end">
-            <a href="#passo1" class="btn">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></a>
+            <Carrinho />
         </div>
     </div>
 </header>
