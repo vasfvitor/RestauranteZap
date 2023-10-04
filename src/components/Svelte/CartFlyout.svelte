@@ -5,14 +5,15 @@
 {#if $isCartOpen}
     {#if Object.values($cartItems).length}
         <aside class="w-full">
-          <div class="font-bold grid grid-cols-4 text-end">
-            <p></p>
-            <p>Produto</p>
-            <p>Quantidade</p>
-            <p>Preço</p>
-          </div>
+            <div class="font-bold grid grid-cols-4 text-end">
+                <p></p>
+                <p>Produto</p>
+                <p>Quantidade</p>
+                <p>Preço</p>
+            </div>
             {#each Object.values($cartItems) as cartItem}
                 <div class="grid grid-cols-4 text-end">
+                   
                     <!-- <img src={cartItem.imageSrc} alt={cartItem.name} /> -->
                     <p>[+][-]</p>
                     <p>{cartItem.name}</p>
