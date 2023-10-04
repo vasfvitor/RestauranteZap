@@ -13,10 +13,8 @@
         const action = e.submitter.value;
         if (action === 'add') {
             isCartOpen.set(true);
-            manageCartItem(ItemInfo, 'add');
-        } else {
-            manageCartItem(ItemInfo, 'remove');
         }
+        manageCartItem(ItemInfo, action);
     }
 </script>
 
