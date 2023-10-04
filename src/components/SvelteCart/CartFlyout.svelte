@@ -1,6 +1,6 @@
 <script>
-    import { isCartOpen, cartItems, totalPrice } from '~/components/Svelte/cartStore';
-    import AddToCartForm from '~/components/Svelte/AddToCartForm.svelte';
+    import { isCartOpen, cartItems, totalItems } from '~/components/SvelteCart/cartStore';
+    import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
 </script>
 
 {#if $isCartOpen}
@@ -28,7 +28,7 @@
                     </div>
                 {/if}
             {/each}
-            <div class="text-end font-bold"><p>Total: R${$totalPrice.toFixed(2)}</p></div>
+            <div class="text-end font-bold"><p>Total: R${$totalItems.toFixed(2)}</p></div>
         </aside>
     {:else}
         <p>Seu carrinho esta vazio :/</p>
