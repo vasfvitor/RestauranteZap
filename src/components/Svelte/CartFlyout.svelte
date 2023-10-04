@@ -15,7 +15,7 @@
                 <div class="grid grid-cols-4 text-end">
                     <!-- <img src={cartItem.imageSrc} alt={cartItem.name} /> -->
                     <p>[+][-]</p>
-                    <h3>{cartItem.name}</h3>
+                    <p>{cartItem.name}</p>
                     <p>{cartItem.quantity}</p>
                     <p>R${cartItem.price.toFixed(2)}</p>
                 </div>

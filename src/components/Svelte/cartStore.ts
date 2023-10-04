@@ -1,5 +1,5 @@
 import { atom, map } from 'nanostores';
-//import { persistentAtom } from '@nanostores/persistent'
+import { persistentAtom } from '@nanostores/persistent'
 
 export const isCartOpen = atom(false);
 export const totalPrice = atom(0);
@@ -13,6 +13,10 @@ export type CartItem = {
 };
 
 export const cartItems = map<Record<string, CartItem>>({});
+
+
+
+
 
 type ItemDisplayInfo = Pick<CartItem, 'id' | 'name' | 'imageSrc' | 'price'>;
 export function addCartItem({ id, name, imageSrc, price }: ItemDisplayInfo) {
