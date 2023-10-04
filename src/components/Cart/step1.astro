@@ -1,0 +1,20 @@
+---
+import MeuCarrinho from '@/components/MeuCarrinho.astro';
+import CartFlyout from '@/components/SvelteCart/CartFlyout.svelte';
+---
+
+<MeuCarrinho>
+    <ul class="steps" slot="passo">
+        <!-- Passos - -->
+        <li id="passo1" class="step step-primary"></li>
+        <li id="passo2" class="step"></li>
+        <li id="passo3" class="step"></li>
+    </ul>
+
+    <section id="etapa1" class="border-y-2 flex flex-col py-2 my-2 border-gray-200">
+        <CartFlyout client:load />
+        <div slot="footer" class="flex gap-4 justify-end">
+            <a href="#passo2" class="btn btn-primary">Continuar</a>
+        </div>
+    </section>
+</MeuCarrinho>

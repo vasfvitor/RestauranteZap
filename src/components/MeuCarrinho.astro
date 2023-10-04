@@ -1,25 +1,17 @@
 ---
-import CartFlyout from './Svelte/CartFlyout.svelte';
+
 ---
 
 <div class="container py-8">
-    <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
     <div>
         <div class="flex md:justify-between text-center flex-col-reverse md:flex-row">
-            <!-- Passos step-primary -->
             <slot name="passo" />
-
             <div class="mb-8 mx-auto md:m-0">
-                <!-- Fechar o modal (carrinho)-->
-                <a href="/" class="btn">Fechar</a>
-                
-                <!-- Fechar com botão ESC -->
+                <a href="#fechar" class="btn">Fechar</a>
             </div>
         </div>
         <h3 class="prose md:prose-lg font-black">Seu carrinho:</h3>
-        <CartFlyout client:load />
+        <slot />
     </div>
-    <slot />
-    <!--x-->
+    <slot name="footer" />
 </div>
-<!--x-->

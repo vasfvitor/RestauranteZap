@@ -1,5 +1,8 @@
 ---
 import { Icon } from 'astro-icon';
+import Step1 from './Cart/step1.astro';
+import Step2 from './Cart/step2.astro';
+import Step3 from './Cart/step3.astro';
 
 const menu = [
     { nome: 'Reservas', texto: 'reservas' },
@@ -10,6 +13,9 @@ const menu = [
 const name = 'Cardapio Online';
 ---
 
+<Step1 />
+<Step2 />
+<Step3 />
 <header class="container">
     <div class="navbar">
         <div class="navbar-start">
@@ -44,7 +50,7 @@ const name = 'Cardapio Online';
             </ul>
         </div>
         <div class="navbar-end">
-            <a href="/passo/1" class="btn">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></a>
+            <a href="#passo1" class="btn">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></a>
         </div>
     </div>
 </header>
