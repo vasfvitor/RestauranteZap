@@ -1,7 +1,5 @@
-import { atom, map, computed } from 'nanostores';
+import { computed } from 'nanostores';
 import { persistentAtom, persistentMap } from '@nanostores/persistent';
-
-//import { setPersistentEngine } from '@nanostores/persistent';
 
 export const isCartOpen = persistentAtom<boolean>(
     'isCartOpen', // key
@@ -11,15 +9,9 @@ export const isCartOpen = persistentAtom<boolean>(
         decode: JSON.parse,
     }
 );
-/*
-export const totalPrice = persistentAtom<number>(
-    'totalPrice', // Key for localStorage
-    0, // Initial value (0 in this case)
-    {
-        encode: JSON.stringify,
-        decode: JSON.parse,
-    }
-);*/
+
+
+
 export type CartItem = {
     itemNum: number;
     id: string;
@@ -37,8 +29,6 @@ export const cartItems = persistentMap<Record<string, CartItem>>(
         decode: JSON.parse,
     }
 );
-
-//export const cartItems = map<Record<string, CartItem>>({});
 
 export let nextItemNum = persistentAtom<number>(
     'nextItemNum', // Key for localStorage
@@ -85,21 +75,9 @@ export function manageCartItem({ itemNum, id, name, imageSrc, price }: ItemDispl
             price: 0,
         });
     }
-    //calculateTotalPrice();
 }
-/*
-export function calculateTotalPrice() {
-    const items = cartItems.get();
-    const total = Object.values(items).reduce((acc, currentItem) => acc + currentItem.price * currentItem.quantity, 0);
-    totalPrice.set(total);
-}
-*/
+
 export const totalItems = computed(cartItems, (items) => {
-    // This callback will be called on every `users` changes
-    /*let sum: number = item.price * item.quantity;
-    return sum;
-    //return users.filter(user => user.isAdmin
-    */
     const total = Object.values(items).reduce((acc, currentItem) => acc + currentItem.price * currentItem.quantity, 0);
     return total;
 });
