@@ -7,6 +7,7 @@ interface MENU {
         price: number;
     }[];
 }
+// DOWN BELOW: export const categorias = Object.keys(Menu) as string[];
 
 export const Menu: MENU = {
     churrasco: [
@@ -526,3 +527,5 @@ export const Menu: MENU = {
         },
     ],
 };
+
+export const categorias = Object.keys(Menu) as string[];

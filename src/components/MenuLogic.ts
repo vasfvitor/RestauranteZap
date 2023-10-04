@@ -1,7 +1,7 @@
-import { categorias } from '~/utils/loadMenuData';
+import { categorias } from '@/utils/dados';
 
 document.addEventListener('astro:page-load', (e) => {
-    console.log('RUN');
+    console.log('astro:page-load');
     const maxItems = 6;
     const loadItems = 4;
 
