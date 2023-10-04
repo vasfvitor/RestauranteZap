@@ -40,13 +40,18 @@ export const cartItems = persistentMap<Record<string, CartItem>>(
 
 //export const cartItems = map<Record<string, CartItem>>({});
 
-let nextItemNum = 0;
+export let nextItemNum = persistentAtom<number>(
+    'nextItemNum', // Key for localStorage
+    0, // Initial value (0 in this case)
+    {
+        encode: JSON.stringify,
+        decode: JSON.parse,
+    }
+);
 
 type ItemDisplayInfo = Pick<CartItem, 'itemNum' | 'id' | 'name' | 'imageSrc' | 'price'>;
 
 export function manageCartItem({ itemNum, id, name, imageSrc, price }: ItemDisplayInfo, action: string) {
-    //console.log(typeof cartItems)
-
     const existingEntry = cartItems.get()[id];
 
     if (action === 'add') {
@@ -57,7 +62,15 @@ export function manageCartItem({ itemNum, id, name, imageSrc, price }: ItemDispl
                 price: existingEntry.price + price,
             });
         } else {
-            cartItems.setKey(id, { itemNum: nextItemNum++, id, name, imageSrc, quantity: 1, price });
+            const next = nextItemNum.set(nextItemNum.get() + 1);
+            cartItems.setKey(id, {
+                itemNum: next,
+                id,
+                name,
+                imageSrc,
+                quantity: 1,
+                price,
+            });
         }
     } else if (action === 'remove' && existingEntry && cartItems.get()[id].quantity > 0) {
         cartItems.setKey(id, {
@@ -65,7 +78,12 @@ export function manageCartItem({ itemNum, id, name, imageSrc, price }: ItemDispl
             quantity: existingEntry.quantity - 1,
             price: existingEntry.price - price,
         });
-    } else {
+    } else if (existingEntry && action === 'remove') {
+        cartItems.setKey(id, {
+            ...existingEntry,
+            quantity: 0,
+            price: 0,
+        });
     }
     //calculateTotalPrice();
 }
