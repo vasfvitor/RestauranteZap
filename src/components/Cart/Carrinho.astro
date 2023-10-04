@@ -1,7 +1,7 @@
 ---
-import Etapa1 from '~/components/Cart/step1.svelte';
-import Etapa2 from '~/components/Cart/step2.svelte';
-import Etapa3 from '~/components/Cart/step3.svelte';
+import Etapa1 from '~/components/Cart/Step1.svelte';
+import Etapa2 from '~/components/Cart/Step2.svelte';
+import Etapa3 from '~/components/Cart/Step3.svelte';
 
 import { Icon } from 'astro-icon';
 ---
@@ -53,9 +53,9 @@ import { Icon } from 'astro-icon';
             </div>
             <!--x-->
             <!-- Corpo do Modal que será ativado de acordo com o script abaixo -->
-            <Etapa1 />
-            <Etapa2 />
-            <Etapa3 />
+            <Etapa1 client:load />
+            <Etapa2 client:load />
+            <Etapa3 client:load />
             <!--x-->
         </div>
     </div>
