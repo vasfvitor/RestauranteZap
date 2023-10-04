@@ -1,8 +1,6 @@
 <script>
     import { manageCartItem, isCartOpen } from '~/components/SvelteCart/cartStore';
-    export let itemId;
-    export let itemName;
-    export let itemPrice;
+    export let itemId, itemName, itemPrice;
 
     let ItemInfo = {
         id: itemId,
@@ -11,21 +9,13 @@
         price: itemPrice,
     };
 
-    function addToCart() {
-        isCartOpen.set(true);
-        manageCartItem(ItemInfo, 'add');
-    }
-
-    function removeFromCart() {
-        manageCartItem(ItemInfo, 'remove');
-    }
-
     function handleCart(e) {
         const action = e.submitter.value;
         if (action === 'add') {
-            addToCart();
+            isCartOpen.set(true);
+            manageCartItem(ItemInfo, 'add');
         } else {
-            removeFromCart();
+            manageCartItem(ItemInfo, 'remove');
         }
     }
 </script>
