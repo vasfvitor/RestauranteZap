@@ -30,6 +30,6 @@
     }
 </script>
 
-<form class="text-yellow-500 font-bold inline-flex" on:submit|preventDefault={(e) => handleCart(e)}>
+<form class="text-red-500 gap-4 px-4 py-2 font-bold inline-flex" on:submit|preventDefault={(e) => handleCart(e)}>
     <slot />
 </form>

@@ -65,12 +65,12 @@ import AddToCartForm from '~/components/Svelte/AddToCartForm.svelte';
                                             itemName={item.name}
                                             client:load
                                         >
-                                            <button type="submit" value="add">
-                                                <Icon class="h-6 w-6" name="mdi:add" />
+                                            <button class="btn btn-square" type="submit" value="add">
+                                                +
                                             </button>
                                             <p>R${item.price}</p>
-                                            <button type="submit" value="remove">
-                                                <Icon class="h-6 w-6" name="ph:minus-bold" />
+                                            <button class="btn btn-square" type="submit" value="remove">
+                                                -
                                             </button>
                                         </AddToCartForm>
                                     </div>

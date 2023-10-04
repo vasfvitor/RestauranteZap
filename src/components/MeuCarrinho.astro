@@ -8,15 +8,16 @@ import CartFlyout from './Svelte/CartFlyout.svelte';
         <div class="flex md:justify-between text-center flex-col-reverse md:flex-row">
             <!-- Passos step-primary -->
             <slot name="passo" />
-            <CartFlyout client:load />
+
             <div class="mb-8 mx-auto md:m-0">
                 <!-- Fechar o modal (carrinho)-->
                 <a href="/" class="btn">Fechar</a>
-
+                
                 <!-- Fechar com botão ESC -->
             </div>
         </div>
         <h3 class="prose md:prose-lg font-black">Seu carrinho:</h3>
+        <CartFlyout client:load />
     </div>
     <slot />
     <!--x-->
