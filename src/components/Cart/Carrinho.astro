@@ -1,11 +1,28 @@
 ---
-import Etapa1 from '@/components/Cart/step1.astro';
-import Etapa2 from '@/components/Cart/step2.astro';
-import Etapa3 from '@/components/Cart/step3.astro';
+import Etapa1 from '~/components/Cart/step1.svelte';
+import Etapa2 from '~/components/Cart/step2.svelte';
+import Etapa3 from '~/components/Cart/step3.svelte';
 
 import { Icon } from 'astro-icon';
 ---
 
+<script>
+    import { openModal, closeModal } from '@/components/Cart/logic';
+    // seleciona todos os botões com a classe abrir
+    const btnAbrirModal = document.querySelectorAll('button.abrir');
+    btnAbrirModal.forEach((button) => {
+        button.addEventListener('click', () => {
+            openModal();
+        });
+    });
+    // seleciona todos os botões com a classe fechar
+    const btnFecharModal = document.querySelectorAll('button.fechar');
+    btnFecharModal.forEach((button) => {
+        button.addEventListener('click', () => {
+            closeModal();
+        });
+    });
+</script>
 <!-- Botão para abrir o carrinho -->
 <button class="btn abrir">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></button>
 <!-- MODAL: -->
@@ -43,58 +60,7 @@ import { Icon } from 'astro-icon';
         </div>
     </div>
 </dialog>
-<script is:inline>
-// Função chamada no componente Etapa*.astro
-function CarregarEtapa(proxEtapa) {
-    // Loop etapas
-    for (let i = 1; i <= 3; i++) {
-        // Ativa o layout da etapa 1, 2 e 3
-        const etapaCarrinho = document.getElementById(`etapa${i}`);
-        // Verifica se é a etapa atual
-        if (i === proxEtapa) {
-            etapaCarrinho.classList.remove('hidden');
-            etapaCarrinho.classList.add('flex');
-        } else {
-            etapaCarrinho.classList.remove('flex');
-            etapaCarrinho.classList.add('hidden');
-        }
-        // Seta indicador de etapa 1, 2 e 3
-        const passoIndicador = document.getElementById(`passo${i}`);
-        // Verifica se é a etapa atual ou anterior
-        if (i <= proxEtapa) {
-            passoIndicador.classList.add('step-primary');
-        } else {
-            passoIndicador.classList.remove('step-primary');
-        }
-    }
-}
-</script>
-<script is:inline>
-// seleciona todos os botões com a classe abrir
-const btnAbrirModal = document.querySelectorAll('button.abrir');
-btnAbrirModal.forEach((button) => {
-    button.addEventListener('click', () => {
-        openModal();
-    });
-});
-// seleciona todos os botões com a classe fechar
-const btnFecharModal = document.querySelectorAll('button.fechar');
-btnFecharModal.forEach((button) => {
-    button.addEventListener('click', () => {
-        closeModal();
-    });
-});
-// Script pra fechar e abrir o modal, e remover o scroll do body
-function openModal() {
-    const meuCarrinho = document.getElementById('meuCarrinho');
-    meuCarrinho.showModal();
-    document.body.classList.add('modal-open');
-}
-function closeModal() {
-    const meuCarrinho = document.getElementById('meuCarrinho');
-    document.body.classList.remove('modal-open');
-}
-</script>
+
 <style>
     body.modal-open {
         overflow: hidden;
