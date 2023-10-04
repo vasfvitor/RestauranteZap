@@ -1,5 +1,5 @@
 <script>
-    import { addCartItem, isCartOpen, calculateTotalPrice } from '~/components/Svelte/cartStore';
+    import { manageCartItem, isCartOpen } from '~/components/Svelte/cartStore';
     export let itemId;
     export let itemName;
     export let itemPrice;
@@ -7,18 +7,29 @@
     let ItemInfo = {
         id: itemId,
         name: itemName,
-        imageSrc: '/images/astronaut-figurine.png',
+        imageSrc: '/images/astronaut-figurine.png', // TODO: make icons for each category
         price: itemPrice,
-        // make icons for each category and maybe custom icons
     };
 
     function addToCart() {
         isCartOpen.set(true);
-        addCartItem(ItemInfo);
-        calculateTotalPrice();
+        manageCartItem(ItemInfo, 'add');
+    }
+
+    function removeFromCart() {
+        manageCartItem(ItemInfo, 'remove');
+    }
+
+    function handleCart(e) {
+        const action = e.submitter.value;
+        if (action === 'add') {
+            addToCart();
+        } else {
+            removeFromCart();
+        }
     }
 </script>
 
-<form on:submit|preventDefault={addToCart}>
+<form class="text-yellow-500 font-bold inline-flex" on:submit|preventDefault={(e) => handleCart(e)}>
     <slot />
 </form>

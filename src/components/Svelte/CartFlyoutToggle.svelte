@@ -1,5 +1,5 @@
 <script>
-    import { isCartOpen, calculateTotalPrice } from '~/components/Svelte/cartStore';
+    import { isCartOpen } from '~/components/Svelte/cartStore';
 </script>
 
 <!--use "$" to read the store value-->
@@ -7,6 +7,5 @@
     class="btn btn-primary"
     on:click={() => {
         isCartOpen.set(!$isCartOpen);
-        calculateTotalPrice();
     }}>Meu Carrinho</button
 >
