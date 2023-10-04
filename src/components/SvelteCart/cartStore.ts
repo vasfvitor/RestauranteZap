@@ -44,7 +44,7 @@ export function manageCartItem({ id, name, imageSrc, price }: ItemDisplayInfo, a
         if (currItem) {
             cartItems.setKey(id, {
                 ...currItem,
-                totalPrice: currItem.totalPrice + price,
+                totalPrice: currItem.price * currItem.quantity,
                 quantity: currItem.quantity + 1,
             });
         } else {
@@ -64,13 +64,13 @@ export function manageCartItem({ id, name, imageSrc, price }: ItemDisplayInfo, a
         cartItems.setKey(id, {
             ...currItem,
             quantity: currItem.quantity - 1,
-            totalPrice: currItem.totalPrice - price,
+            totalPrice: currItem.price * currItem.quantity,
         });
     } else if (action === 'clear' && currItem && cartItems.get()[id].quantity > 0) {
         cartItems.setKey(id, {
             ...currItem,
-            quantity: 0,
             totalPrice: 0,
+            quantity: 0,
         });
     } else if (currItem) {
         cartItems.setKey(id, {
@@ -81,8 +81,8 @@ export function manageCartItem({ id, name, imageSrc, price }: ItemDisplayInfo, a
     }
 }
 
-export const totalItems = computed(cartItems, (items) => {
+export const cartSubTotal = computed(cartItems, (items) => {
     const total = Object.values(items).reduce((acc, currentItem) => acc + currentItem.price * currentItem.quantity, 0);
-    //return Number(total.toFixed(2));
-    return total
+    return total.toFixed(2);
+    //return total
 });
