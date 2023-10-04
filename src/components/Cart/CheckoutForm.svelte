@@ -1,4 +1,4 @@
-<form action="" class="container grid grid-rows-6 md:grid-rows-3 grid-flow-col gap-4">
+<form action="" class="container grid grid-flow-col grid-rows-6 gap-4 md:grid-rows-3">
     <div class="block w-full max-w-xs">
         <label for="cep" class="label">
             <span class="label-text">CEP:</span>
@@ -37,7 +37,7 @@
         </label>
         <input id="complemento" type="text" placeholder="Complemento" class="input input-bordered w-full max-w-xs" />
 
-        <div class="hidden disabled w-full max-w-xs">
+        <div class="disabled hidden w-full max-w-xs">
             <label for="uf" class="label">
                 <span class="label-text">UF</span>
             </label>
@@ -72,5 +72,5 @@
             </select>
         </div>
     </div>
-    <slot name="submit"></slot>
+    <slot name="submit" />
 </form>

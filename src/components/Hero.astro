@@ -7,17 +7,17 @@ import Burguer from '@/images/burguer.png';
 import { DADOS } from '@/utils/consts';
 ---
 
-<section class="flex flex-col md:flex-row justify-center py-20">
-    <div class="grid prose md:prose-lg xl:prose-xl place-content-center">
+<section class="flex flex-col justify-center py-20 md:flex-row">
+    <div class="prose grid place-content-center md:prose-lg xl:prose-xl">
         <h1>Escolha sua <br /> comida <span class="text-yellow-500">favorita.</span></h1>
         <p>Aproveite nosso cardápio! Escolha o que desejar e <br /> receba em sua casa de forma rápida e segura.</p>
-        <div class="gap-4 flex">
+        <div class="flex gap-4">
             <a href="#cardapio" class="btn btn-primary">Ver cardápio</a>
             <a href={DADOS.social.whatsapp} class="btn">
                 <Icon class="h-6 w-6" name="mdi:phone" />{DADOS.telefone}
             </a>
         </div>
-        <div class="mt-20 gap-4 flex flex-row">
+        <div class="mt-20 flex flex-row gap-4">
             <a href=`${DADOS.social.instagram}` class="btn btn-square btn-sm p-1">
                 <Icon name="mdi:instagram" />
             </a>
@@ -29,10 +29,10 @@ import { DADOS } from '@/utils/consts';
             </a>
         </div>
     </div>
-    <div class="grid place-content-center relative">
+    <div class="relative grid place-content-center">
         <Image src={Burguer} class="" alt="burguer" />
-        <div class="absolute bg-orange-300 rounded-[120px] w-[24rem] h-[24rem] -z-10 -top-16 right-0"></div>
-        <div class="absolute bg-white rounded-xl bottom-0 right-0 p-4 prose shadow-lg">
+        <div class="absolute -top-16 right-0 -z-10 h-[24rem] w-[24rem] rounded-[120px] bg-orange-300"></div>
+        <div class="prose absolute bottom-0 right-0 rounded-xl bg-white p-4 shadow-lg">
             <span
                 >"Entrega rapida e funcionários simpáticos. <br /> A comida chegou quente <br /> e muito saborosa!"</span
             >

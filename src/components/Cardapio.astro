@@ -14,8 +14,8 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
 ---
 
 <Section id="cardapio">
-    <div class="prose md:prose-lg text-center mx-auto pb-8"><h2>Cardápio</h2></div>
-    <div class="flex flex-wrap justify-center w-full my-4">
+    <div class="prose mx-auto pb-8 text-center md:prose-lg"><h2>Cardápio</h2></div>
+    <div class="my-4 flex w-full flex-wrap justify-center">
         {
             categorias.map((name) => (
                 <button data-categ={name} class="categorias btn btn-secondary m-2">
@@ -33,17 +33,17 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
         {
             Object.keys(Menu).map((category) => (
                 <div id={category}>
-                    <div class="justify-center flex flex-row flex-wrap gap-4 md:gap-8">
+                    <div class="flex flex-row flex-wrap justify-center gap-4 md:gap-8">
                         {Menu[category].map((item, i) => (
                             <div
                                 id={`item-${i}`}
                                 class:list={[
-                                    `menu-item hidden card w-96 bg-base-100 shadow-xl animate__animated animate__fadeIn animate__faster`,
+                                    `menu-item animate__animated animate__fadeIn animate__faster card hidden w-96 bg-base-100 shadow-xl`,
                                 ]}
                             >
                                 <figure>
                                     <Image
-                                        class="mx-auto rounded-md w-full"
+                                        class="mx-auto w-full rounded-md"
                                         widths={[400, 768, 1024, 2040]}
                                         sizes="(max-width: 767px) 400px, (max-width: 1023px) 768px, (max-width: 2039px) 1024px, 2040px"
                                         loading="lazy"
@@ -84,7 +84,7 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
         <script src="@/components/MenuLogic"></script>
     </div>
 
-    <div class="text-center my-8">
+    <div class="my-8 text-center">
         <button class="btn btn-primary" id="loadMore">Ver mais</button>
     </div>
 </Section>

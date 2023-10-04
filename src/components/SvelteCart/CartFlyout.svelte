@@ -5,8 +5,8 @@
 
 {#if $isCartOpen}
     {#if Object.values($cartItems).length}
-        <aside class="w-full max-w-screen-md mx-auto">
-            <div class="font-bold grid grid-cols-4 text-end">
+        <aside class="mx-auto w-full max-w-screen-md">
+            <div class="grid grid-cols-4 text-end font-bold">
                 <p></p>
                 <p>Produto</p>
                 <p>Quantidade</p>
@@ -14,7 +14,7 @@
             </div>
             {#each Object.values($cartItems) as cartItem}
                 {#if cartItem.quantity > 0}
-                    <div class="grid grid-cols-4 text-end items-center">
+                    <div class="grid grid-cols-4 items-center text-end">
                         <!-- <img src={cartItem.imageSrc} alt={cartItem.name} /> -->
                         <p>
                             <AddToCartForm itemPrice={cartItem.price} itemId={cartItem.id} itemName={cartItem.name}>
