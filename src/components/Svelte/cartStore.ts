@@ -1,9 +1,25 @@
 import { atom, map } from 'nanostores';
-import { persistentAtom } from '@nanostores/persistent';
+import { persistentAtom, persistentMap } from '@nanostores/persistent';
 
-export const isCartOpen = atom(false);
-export const totalPrice = atom(0);
+//import { setPersistentEngine } from '@nanostores/persistent';
 
+export const isCartOpen = persistentAtom<boolean>(
+    'isCartOpen', // key
+    false,
+    {
+        encode: JSON.stringify, 
+        decode: JSON.parse, 
+    }
+);
+
+export const totalPrice = persistentAtom<number>(
+    'totalPrice', // Key for localStorage
+    0, // Initial value (0 in this case)
+    {
+        encode: JSON.stringify, 
+        decode: JSON.parse, 
+    }
+);
 export type CartItem = {
     itemNum: number;
     id: string;
@@ -13,7 +29,16 @@ export type CartItem = {
     price: number;
 };
 
-export const cartItems = map<Record<string, CartItem>>({});
+export const cartItems = persistentMap<Record<string, CartItem>>(
+    'cartItems', // Key 
+    {}, // Initial value (an empty object in this case)
+    {
+        encode: JSON.stringify, 
+        decode: JSON.parse, 
+    }
+);
+
+//export const cartItems = map<Record<string, CartItem>>({});
 
 let nextItemNum = 0;
 
