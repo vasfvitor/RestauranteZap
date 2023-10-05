@@ -9,7 +9,7 @@ import 'animate.css';
 import Head from '~/layout/Head.astro';
 import Footer from '~/layout/Footer.astro';
 
-import ModalCartFlyout from '~/components/Cart/Steps/ModalCartFlyout.svelte';
+import ModalCartFlyout from '~/components/Cart/ModalCartFlyout.svelte';
 ---
 
 <html lang="pt-br" class="scroll-smooth bg-orange-50">
@@ -17,6 +17,6 @@ import ModalCartFlyout from '~/components/Cart/Steps/ModalCartFlyout.svelte';
     <body transition:animate="fade">
         <slot />
         <Footer />
-        <ModalCartFlyout client:idle />
+        <ModalCartFlyout />
     </body>
 </html>
