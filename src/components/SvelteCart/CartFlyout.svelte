@@ -1,7 +1,7 @@
 <script>
     import { isCartOpen, cartItems, cartSubTotal } from '~/components/SvelteCart/cartStore';
     import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
-    import CartFooter from '~/components/Cart/CartFooter.svelte';
+    import CartTotal from '~/components/Cart/CartTotal.svelte';
     import { fade } from 'svelte/transition';
     // import * as eases from 'svelte/easing';
 </script>
@@ -43,7 +43,7 @@
                     </div>
                 {/if}
             {/each}
-            <CartFooter />
+            <CartTotal />
         </aside>
     {:else}
         <p>Seu carrinho esta vazio :/</p>

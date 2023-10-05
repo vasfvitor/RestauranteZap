@@ -1,12 +1,16 @@
 <script>
     import CartFlyout from '@/components/SvelteCart/CartFlyout.svelte';
-    import CartFooter from '~/components/Cart/CartFooter.svelte';
+    import CartTotal from '~/components/Cart/CartTotal.svelte';
     import CheckoutForm from '@/components/Cart/CheckoutForm.svelte';
     import { cartItems } from '~/components/SvelteCart/cartStore';
 
     import { openModal, closeModal } from '@/components/Cart/logic';
 
     function LoadStep(step) {
+        isModalOverflowHidden = true;
+        setTimeout(() => {
+            isModalOverflowHidden = false;
+        }, 800);
         stepCart = step;
     }
 
@@ -31,13 +35,17 @@
     });
 
     let stepCart = 1;
+    let isModalOverflowHidden = true;
 </script>
 
 <!-- Botão para abrir o carrinho -->
 <button class="abrir btn">Meu Carrinho</button>
 <!-- MODAL: -->
 <dialog id="meuCarrinho" class="modal">
-    <div class="modal-box m-0 h-screen max-h-none w-full max-w-none rounded-none p-0">
+    <div
+        class="modal-box m-0 h-screen max-h-none w-full max-w-none rounded-none p-0"
+        class:overflow-hidden={isModalOverflowHidden}
+    >
         <div class="container py-8">
             <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
             <div>
@@ -66,22 +74,22 @@
 
             {#if stepCart === 1}
                 <section
-                    in:fade={{ duration: 200, delay: 250 }}
+                    in:fade={{ duration: 300, delay: 200 }}
                     out:fade={{ duration: 200 }}
                     id="etapa1"
-                    class=" container flex flex-col bg-blue-100"
+                    class="container flex flex-col bg-blue-100"
                 >
                     <div class="my-2 flex flex-col border-y-2 border-gray-200 py-2">
                         <CartFlyout />
                     </div>
-                    <CartFooter />
+                    <CartTotal />
                     <div class="flex justify-end gap-4">
                         <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
                     </div>
                 </section>
             {:else if stepCart === 2}
                 <section
-                    in:fade={{ duration: 200, delay: 250 }}
+                    in:fade={{ duration: 300, delay: 200 }}
                     out:fade={{ duration: 200 }}
                     id="etapa2"
                     class=" container flex flex-col bg-blue-100"
@@ -92,7 +100,7 @@
                             <CheckoutForm />
                         </div>
                     </div>
-                    <CartFooter />
+                    <CartTotal />
                     <div class="inline-flex justify-end gap-4">
                         <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
                         <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
@@ -100,7 +108,7 @@
                 </section>
             {:else if stepCart === 3}
                 <section
-                    in:fade={{ duration: 200, delay: 250 }}
+                    in:fade={{ duration: 300, delay: 200 }}
                     out:fade={{ duration: 200 }}
                     id="etapa3"
                     class=" container flex flex-col bg-blue-100"
@@ -136,7 +144,7 @@
                             <p>Seu carrinho esta vazio :/</p>
                         {/if}
                     </div>
-                    <CartFooter />
+                    <CartTotal />
                     <div class="flex justify-end gap-4">
                         <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
                         <button class="btn btn-primary">Finalizar</button>
