@@ -1,4 +1,4 @@
-import { computed, atom } from 'nanostores';
+import { computed } from 'nanostores';
 import { persistentAtom, persistentMap } from '@nanostores/persistent';
 
 export const isCartOpen = persistentAtom<boolean>('isCartOpen', false, {
@@ -86,5 +86,3 @@ export const cartSubTotal = computed(cartItems, (items) => {
     return total.toFixed(2);
     //return total
 });
-
-export const deliveryFee = atom(5);

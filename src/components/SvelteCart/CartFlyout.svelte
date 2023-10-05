@@ -8,11 +8,7 @@
 
 {#if $isCartOpen}
     {#if Object.values($cartItems).length}
-        <aside class="mx-auto w-full max-w-screen-md">
-            <div class="grid grid-cols-4 text-end font-bold">
-                <p>Seu carrinho</p>
-            </div>
-
+        <aside class="mx-auto w-full">
             {#each Object.values($cartItems) as cartItem}
                 {#if cartItem.quantity > 0}
                     <div
@@ -43,7 +39,6 @@
                     </div>
                 {/if}
             {/each}
-            <CartTotal />
         </aside>
     {:else}
         <p>Seu carrinho esta vazio :/</p>
