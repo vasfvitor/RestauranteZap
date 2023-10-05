@@ -27,7 +27,7 @@
                             <button class="btn btn-square btn-accent join-item btn-sm" type="submit" value="add"
                                 >+</button
                             >
-                            <p class=" join-item my-auto w-4 text-center">{cartItem.quantity}</p>
+                            <p class=" join-item my-auto w-8 text-center">{cartItem.quantity}</p>
                             <button class="btn btn-square btn-accent join-item btn-sm" type="submit" value="remove"
                                 >-</button
                             >
