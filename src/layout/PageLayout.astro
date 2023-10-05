@@ -4,8 +4,12 @@ import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/700.css';
 import '@fontsource/poppins/900.css';
 
+import 'animate.css';
+
 import Head from '@/layout/Head.astro';
 import Footer from '@/layout/Footer.astro';
+
+import CartFlyoutToggle from '~/components/SvelteCart/CartFlyoutToggle.svelte';
 ---
 
 <style>
@@ -23,4 +27,5 @@ import Footer from '@/layout/Footer.astro';
         <slot />
         <Footer />
     </body>
+    <CartFlyoutToggle client:idle />
 </html>

@@ -13,7 +13,7 @@
                     R${cartItem.price} | R${cartItem.totalPrice.toFixed(2)}
                 </p>
             </div>
-            <p class=" join-item my-auto w-4 text-center">{cartItem.quantity}</p>
+            <p class=" join-item my-auto w-4 text-center">×{cartItem.quantity}</p>
         </div>
     {/if}
 {/each}
