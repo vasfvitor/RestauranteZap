@@ -1,6 +1,6 @@
 <script>
-    import { cartItems, cartSubTotal } from '~/components/SvelteCart/cartStore';
-    import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
+    import { cartItems, cartSubTotal } from '~/components/Cart/cartStore';
+    import AddToCartForm from '~/components/Cart/AddToCartForm.svelte';
     import { fade } from 'svelte/transition';
     function openModal() {
         document.getElementById('meuCarrinho').showModal();

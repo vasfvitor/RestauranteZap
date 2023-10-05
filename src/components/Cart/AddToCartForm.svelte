@@ -1,5 +1,5 @@
 <script>
-    import { manageCartItem, isCartOpen } from '~/components/SvelteCart/cartStore';
+    import { manageCartItem, isCartOpen } from '~/components/Cart/cartStore';
     export let itemId, itemName, itemPrice;
 
     let ItemInfo = {

@@ -5,8 +5,8 @@
 </script>
 
 <section
-    in:fade={{ duration: 300, delay: 200 }}
-    out:fade={{ duration: 200 }}
+    in:fade={{ duration: 100, delay: 250 }}
+    out:fade={{ duration: 100 }}
     class="container flex flex-col md:p-4"
     id={ID}
 >

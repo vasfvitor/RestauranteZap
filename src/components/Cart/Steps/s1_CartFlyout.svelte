@@ -1,6 +1,6 @@
 <script>
-    import { cartItems } from '~/components/SvelteCart/cartStore';
-    import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
+    import { cartItems } from '~/components/Cart/cartStore';
+    import AddToCartForm from '~/components/Cart/AddToCartForm.svelte';
     import { fade } from 'svelte/transition';
     // import * as eases from 'svelte/easing';
 </script>

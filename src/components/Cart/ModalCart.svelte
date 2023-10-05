@@ -1,8 +1,8 @@
 <script>
-    import CartFlyout from '@/components/SvelteCart/CartFlyout.svelte';
-    import CheckoutForm from '@/components/Cart/CheckoutForm.svelte';
-    import StepWrapper from './StepWrapper.svelte';
-    import CartSummary from './CartSummary.svelte';
+    import s1_CartFlyout from '~/components/Cart/Steps/s1_CartFlyout.svelte';
+    import s2_CheckoutForm from '@/components/Cart/Steps/s2_CheckoutForm.svelte';
+    import s3_CartSummary from '~/components/Cart/Steps/Step03_s3_CartSummary.svelte';
+    import StepWrapper from '~/components/Cart/StepWrapper.svelte';
 
     function openModal() {
         document.getElementById('meuCarrinho').showModal();
@@ -67,15 +67,15 @@
 
             {#if stepCart === 1}
                 <StepWrapper stepCart="1" ID="etapa1" title="Meu carrinho:" {LoadStep}>
-                    <CartFlyout />
+                    <s1_CartFlyout />
                 </StepWrapper>
             {:else if stepCart === 2}
                 <StepWrapper stepCart="2" ID="etapa2" title="Endereço de entrega:" {LoadStep}>
-                    <CheckoutForm />
+                    <s2_CheckoutForm />
                 </StepWrapper>
             {:else if stepCart === 3}
                 <StepWrapper stepCart="3" ID="etapa3" title="Resumo do pedido:" {LoadStep}>
-                    <CartSummary />
+                    <s3_CartSummary />
                 </StepWrapper>
             {/if}
             <!--x-->

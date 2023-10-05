@@ -1,5 +1,5 @@
 <script>
-    import { cartSubTotal } from '~/components/SvelteCart/cartStore';
+    import { cartSubTotal } from '~/components/Cart/cartStore';
 </script>
 
 <div class="font-base my-4 self-end text-gray-800">
