@@ -1,4 +1,4 @@
-import { categorias } from '@/utils/dados';
+import { categorias } from '~/utils/dados';
 
 document.addEventListener('astro:page-load', (e) => {
     console.log('astro:page-load');

@@ -82,7 +82,12 @@ export function manageCartItem({ id, name, imageSrc, price }: ItemDisplayInfo, a
 }
 
 export const cartSubTotal = computed(cartItems, (items) => {
-    const total = Object.values(items).reduce((acc, currentItem) => acc + currentItem.price * currentItem.quantity, 0);
+    const total = Object.values(items).reduce((acc, thisItem) => acc + thisItem.price * thisItem.quantity, 0);
     return total.toFixed(2);
     //return total
+});
+
+export const cartQuantity = computed(cartItems, (items) => {
+    const totalQuantity = Object.values(items).reduce((acc, thisItem) => acc + thisItem.quantity, 0);
+    return totalQuantity;
 });

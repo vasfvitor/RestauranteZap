@@ -1,19 +1,16 @@
 ---
-import { Icon } from 'astro-icon';
-import Image from '@/components/Image.astro';
-import Section from '@/layout/Section.astro';
+import Image from '~/components/helper/Image.astro';
+import HomeSection from '~/layout/HomeSection.astro';
 
-import { Menu, categorias } from '@/utils/dados';
+import { Menu, categorias } from '~/utils/dados';
 import 'animate.css';
 
 console.log('Reloaded');
 
-import CartFlyoutToggle from '~/components/SvelteCart/CartFlyoutToggle.svelte';
-import CartFlyout from '~/components/SvelteCart/CartFlyout.svelte';
-import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
+import AddToCartForm from '~/components/Cart/AddToCartForm.svelte';
 ---
 
-<Section id="cardapio">
+<HomeSection id="cardapio">
     <div class="prose mx-auto pb-8 text-center md:prose-lg"><h2>Cardápio</h2></div>
     <div class="my-4 flex w-full flex-wrap justify-center">
         {
@@ -25,10 +22,7 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
         }
     </div>
 
-    <div class="flex gap-4 py-8">
-        <CartFlyoutToggle client:load />
-        <CartFlyout client:load />
-    </div>
+    <div class="flex gap-4 py-8"></div>
     <div class="menu-item-wrapper">
         {
             Object.keys(Menu).map((category) => (
@@ -81,10 +75,10 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
                 </div>
             ))
         }
-        <script src="@/components/MenuLogic"></script>
+        <script src="~/components/MenuLogic"></script>
     </div>
 
     <div class="my-8 text-center">
         <button class="btn btn-primary" id="loadMore">Ver mais</button>
     </div>
-</Section>
+</HomeSection>

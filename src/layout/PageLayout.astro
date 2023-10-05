@@ -1,15 +1,24 @@
 ---
 import '@fontsource/poppins/200.css';
 import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/900.css';
 
-import Head from '@/layout/Head.astro';
-import Footer from '@/layout/Footer.astro';
+import 'animate.css';
+
+import Head from '~/layout/Head.astro';
+import Footer from '~/layout/Footer.astro';
+
+import ModalCartFlyout from '~/components/Cart/ModalCartFlyout.svelte';
 ---
 
 <style>
     body {
         font-family: 'Poppins', sans-serif;
+    }
+
+    body.modal-open {
+        overflow: hidden;
     }
 </style>
 <html lang="pt-br" class="scroll-smooth bg-orange-50">
@@ -18,4 +27,5 @@ import Footer from '@/layout/Footer.astro';
         <slot />
         <Footer />
     </body>
+    <ModalCartFlyout client:idle />
 </html>

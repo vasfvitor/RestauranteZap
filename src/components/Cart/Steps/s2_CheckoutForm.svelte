@@ -1,3 +1,6 @@
+<script>
+</script>
+
 <form action="" class="container grid grid-flow-col grid-rows-6 gap-4 md:grid-rows-3">
     <div class="block w-full max-w-xs">
         <label for="cep" class="label">
@@ -72,5 +75,4 @@
             </select>
         </div>
     </div>
-    <slot name="submit" />
 </form>
