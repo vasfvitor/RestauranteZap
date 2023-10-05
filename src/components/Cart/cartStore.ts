@@ -44,8 +44,8 @@ export function manageCartItem({ id, name, imageSrc, price }: ItemDisplayInfo, a
         if (currItem) {
             cartItems.setKey(id, {
                 ...currItem,
-                totalPrice: currItem.price * currItem.quantity,
                 quantity: currItem.quantity + 1,
+                totalPrice: currItem.price * (currItem.quantity + 1),
             });
         } else {
             cartItems.setKey(id, {
@@ -58,13 +58,12 @@ export function manageCartItem({ id, name, imageSrc, price }: ItemDisplayInfo, a
                 itemNum: nextItemNum.get() + 1,
             });
             nextItemNum.set(nextItemNum.get() + 1);
-            console.log(nextItemNum.get());
         }
     } else if (action === 'remove' && currItem && cartItems.get()[id].quantity > 0) {
         cartItems.setKey(id, {
             ...currItem,
             quantity: currItem.quantity - 1,
-            totalPrice: currItem.price * currItem.quantity,
+            totalPrice: currItem.price * (currItem.quantity - 1),
         });
     } else if (action === 'clear' && currItem && cartItems.get()[id].quantity > 0) {
         cartItems.setKey(id, {
