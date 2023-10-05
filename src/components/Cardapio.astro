@@ -1,5 +1,4 @@
 ---
-
 import Image from '@/components/Image.astro';
 import HomeSection from '@/layout/HomeSection.astro';
 
@@ -7,7 +6,6 @@ import { Menu, categorias } from '@/utils/dados';
 import 'animate.css';
 
 console.log('Reloaded');
-
 
 import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
 ---
@@ -24,9 +22,7 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
         }
     </div>
 
-    <div class="flex gap-4 py-8">
-       
-    </div>
+    <div class="flex gap-4 py-8"></div>
     <div class="menu-item-wrapper">
         {
             Object.keys(Menu).map((category) => (

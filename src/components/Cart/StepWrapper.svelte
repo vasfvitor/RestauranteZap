@@ -10,7 +10,7 @@
     class="container flex flex-col md:p-4"
     id={ID}
 >
-    <div class="flex flex-col my-2 border-y-2 border-gray-200 py-2 container">
+    <div class="container my-2 flex flex-col border-y-2 border-gray-200 py-2">
         <div class="prose my-8">
             <h2>{title}</h2>
         </div>
