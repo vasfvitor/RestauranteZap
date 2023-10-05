@@ -9,7 +9,7 @@ import 'animate.css';
 import Head from '@/layout/Head.astro';
 import Footer from '@/layout/Footer.astro';
 
-import CartFlyoutToggle from '~/components/SvelteCart/CartFlyoutToggle.svelte';
+import ModalCartFlyout from '~/components/SvelteCart/ModalCartFlyout.svelte';
 ---
 
 <style>
@@ -27,5 +27,5 @@ import CartFlyoutToggle from '~/components/SvelteCart/CartFlyoutToggle.svelte';
         <slot />
         <Footer />
     </body>
-    <CartFlyoutToggle client:idle />
+    <ModalCartFlyout client:idle />
 </html>

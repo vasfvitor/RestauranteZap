@@ -12,7 +12,7 @@
 
 {#if Object.values($cartItems).length}
     <aside class="" in:fade={{ duration: 300, delay: 200 }} out:fade={{ duration: 200 }}>
-        <div class="max-w mx-auto max-w-lg bg-red-500">
+        <div class="max-w mx-auto max-w-lg">
             {#each Object.values($cartItems) as cartItem}
                 {#if cartItem.quantity > 0}
                     <div

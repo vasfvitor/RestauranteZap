@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon';
 
 import { NAVBUTTONS, NAVTITLE } from '@/utils/consts';
 
-import Carrinho from '~/components/Cart/Carrinho.svelte';
+import ModalCart from '~/components/Cart/ModalCart.svelte';
 ---
 
 <header class="container">
@@ -40,7 +40,7 @@ import Carrinho from '~/components/Cart/Carrinho.svelte';
             </ul>
         </div>
         <div class="navbar-end">
-            <Carrinho client:load />
+            <ModalCart client:load />
         </div>
     </div>
 </header>
