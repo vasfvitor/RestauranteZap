@@ -37,7 +37,7 @@
 <button class="abrir btn">Meu Carrinho</button>
 <!-- MODAL: -->
 <dialog id="meuCarrinho" class="modal">
-    <div class="modal-box m-0 h-screen  max-h-none w-full max-w-none rounded-none p-0">
+    <div class="modal-box m-0 h-screen max-h-none w-full max-w-none rounded-none p-0">
         <div class="container py-8">
             <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
             <div>
