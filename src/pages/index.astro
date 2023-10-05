@@ -5,6 +5,10 @@ import Hero from '@/components/Hero.astro';
 import Cardapio from '@/components/Cardapio.astro';
 import Servicos from '@/components/Servicos.astro';
 
+import CartFlyoutToggle from '~/components/SvelteCart/CartFlyoutToggle.svelte';
+import CartPreview from '~/components/SvelteCart/CartPreview.svelte';
+
+import 'animate.css';
 // o Layout já inclui o <html>, <head> e <footer>
 ---
 
@@ -12,7 +16,9 @@ import Servicos from '@/components/Servicos.astro';
     <Navbar />
     <main class="container py-20">
         <Hero />
-        <Servicos />
         <Cardapio />
+        <Servicos />
     </main>
 </Layout>
+<CartFlyoutToggle client:idle />
+<CartPreview client:idle />
