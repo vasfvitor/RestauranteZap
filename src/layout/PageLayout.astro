@@ -17,6 +17,6 @@ import ModalCartFlyout from '~/components/Cart/ModalCartFlyout.svelte';
     <body transition:animate="fade">
         <slot />
         <Footer />
-        <ModalCartFlyout />
+        <ModalCartFlyout client:idle />
     </body>
 </html>
