@@ -1,6 +1,9 @@
 <script>
     import { isCartOpen, cartItems, cartSubTotal } from '~/components/SvelteCart/cartStore';
     import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
+    import CartFooter from '~/components/Cart/CartFooter.svelte';
+    import { fade } from 'svelte/transition';
+    // import * as eases from 'svelte/easing';
 </script>
 
 {#if $isCartOpen}
@@ -12,7 +15,11 @@
 
             {#each Object.values($cartItems) as cartItem}
                 {#if cartItem.quantity > 0}
-                    <div class="my-4 flex w-full items-center text-start">
+                    <div
+                        in:fade={{ duration: 400 }}
+                        out:fade={{ duration: 250 }}
+                        class=" my-4 flex w-full items-center text-start"
+                    >
                         <img class="mask mask-squircle mx-4 h-12 w-12" src="/temp.png" alt={cartItem.name} />
 
                         <div class=" grow text-start font-black">
@@ -36,14 +43,7 @@
                     </div>
                 {/if}
             {/each}
-
-            <div class="font-base text-gray-800">
-                <p>Subtotal: R${$cartSubTotal}</p>
-                <p class="text-gray-300">Entrega : R$</p>
-                <p class="text-lg font-normal">
-                    Total: <span class="font-bold text-yellow-500">R${$cartSubTotal}</span>
-                </p>
-            </div>
+            <CartFooter />
         </aside>
     {:else}
         <p>Seu carrinho esta vazio :/</p>
