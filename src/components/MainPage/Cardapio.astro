@@ -1,13 +1,13 @@
 ---
-import Image from '@/components/Image.astro';
-import HomeSection from '@/layout/HomeSection.astro';
+import Image from '~/components/helper/Image.astro';
+import HomeSection from '~/layout/HomeSection.astro';
 
-import { Menu, categorias } from '@/utils/dados';
+import { Menu, categorias } from '~/utils/dados';
 import 'animate.css';
 
 console.log('Reloaded');
 
-import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
+import AddToCartForm from '~/components/Cart/AddToCartForm.svelte';
 ---
 
 <HomeSection id="cardapio">
@@ -75,7 +75,7 @@ import AddToCartForm from '~/components/SvelteCart/AddToCartForm.svelte';
                 </div>
             ))
         }
-        <script src="@/components/MenuLogic"></script>
+        <script src="~/components/MenuLogic"></script>
     </div>
 
     <div class="my-8 text-center">

@@ -1,7 +1,7 @@
 <script>
     import CartPreview from '~/components/Cart/CartPreview.svelte';
     import { cartQuantity } from '~/components/Cart/cartStore';
-    import Modal from '~/components/Modal.svelte';
+    import Modal from '~/components/helper/Modal.svelte';
     import { quintOut } from 'svelte/easing';
     import { fly } from 'svelte/transition';
 

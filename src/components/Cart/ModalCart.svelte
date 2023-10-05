@@ -1,8 +1,8 @@
 <script>
     import s1_CartFlyout from '~/components/Cart/Steps/s1_CartFlyout.svelte';
-    import s2_CheckoutForm from '@/components/Cart/Steps/s2_CheckoutForm.svelte';
-    import s3_CartSummary from '~/components/Cart/Steps/Step03_s3_CartSummary.svelte';
-    import StepWrapper from '~/components/Cart/StepWrapper.svelte';
+    import s2_CheckoutForm from '~/components/Cart/Steps/s2_CheckoutForm.svelte';
+    import s3_CartSummary from '~/components/Cart/Steps/s3_CartSummary.svelte';
+    import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
 
     function openModal() {
         document.getElementById('meuCarrinho').showModal();

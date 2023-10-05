@@ -1,9 +1,9 @@
 ---
-import Layout from '@/layout/PageLayout.astro';
-import Navbar from '@/components/Navbar.astro';
-import Hero from '@/components/Hero.astro';
-import Cardapio from '@/components/Cardapio.astro';
-import Servicos from '@/components/Servicos.astro';
+import Layout from '~/layout/PageLayout.astro';
+import Navbar from '~/components/MainPage/Navbar.astro';
+import Hero from '~/components/Cart/MainPage/Hero.astro';
+import Cardapio from '~/components/MainPage/Cardapio.astro';
+import Servicos from '~/components/MainPage/Servicos.astro';
 
 // o Layout já inclui o <html>, <head> e <footer>
 ---
@@ -12,7 +12,6 @@ import Servicos from '@/components/Servicos.astro';
     <Navbar />
     <main class="container py-20">
         <Hero />
-
         <Cardapio />
         <Servicos />
     </main>
