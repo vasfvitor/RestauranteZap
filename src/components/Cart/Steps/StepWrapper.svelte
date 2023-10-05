@@ -1,9 +1,9 @@
 <script>
-    import CartTotal from '~/components/Cart/CartTotal.svelte';
     import { fade } from 'svelte/transition';
 
-    // props
-    export let ID, title, LoadStep;
+    import CartTotal from '~/components/Cart/CartTotal.svelte';
+
+    export let ID, title, LoadStep; // props
 </script>
 
 <section

@@ -13,9 +13,9 @@
         qty = newQty;
     });
 
+    // TODO: remove function
     function lool() {
         showModal = false;
-        console.log(showModal);
     }
 </script>
 

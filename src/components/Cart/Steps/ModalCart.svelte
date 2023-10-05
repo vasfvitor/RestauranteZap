@@ -4,6 +4,9 @@
     import S3CartSummary from '~/components/Cart/Steps/S3CartSummary.svelte';
     import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
 
+    let stepCart = 1;
+    let isOverflowHidden = false;
+
     function openModal() {
         document.getElementById('meuCarrinho').showModal();
         document.body.classList.add('modal-open');
@@ -19,9 +22,6 @@
         }, 400);
         stepCart = step;
     }
-
-    let stepCart = 1;
-    let isOverflowHidden = false;
 </script>
 
 <!-- Botão para abrir o carrinho -->
@@ -63,18 +63,17 @@
                 <h3 class="prose font-black md:prose-lg">Seu carrinho:</h3>
             </div>
             <!--x-->
-            <!-- Corpo do Modal que será ativado de acordo com o script abaixo -->
 
             {#if stepCart === 1}
-                <StepWrapper stepCart="1" ID="etapa1" title="Meu carrinho:" {LoadStep}>
+                <StepWrapper ID="etapa1" title="Meu carrinho:" {LoadStep}>
                     <S1CartFlyout />
                 </StepWrapper>
             {:else if stepCart === 2}
-                <StepWrapper stepCart="2" ID="etapa2" title="Endereço de entrega:" {LoadStep}>
+                <StepWrapper ID="etapa2" title="Endereço de entrega:" {LoadStep}>
                     <S2CheckoutForm />
                 </StepWrapper>
             {:else if stepCart === 3}
-                <StepWrapper stepCart="3" ID="etapa3" title="Resumo do pedido:" {LoadStep}>
+                <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep}>
                     <S3CartSummary />
                 </StepWrapper>
             {/if}
