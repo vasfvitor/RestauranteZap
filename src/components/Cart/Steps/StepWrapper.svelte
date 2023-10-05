@@ -1,6 +1,8 @@
 <script>
+    import CartTotal from '~/components/Cart/CartTotal.svelte';
     import { fade } from 'svelte/transition';
-    import CartTotal from './CartTotal.svelte';
+
+    // props
     export let ID, title, LoadStep;
 </script>
 
