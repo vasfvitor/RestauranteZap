@@ -1,30 +1,33 @@
----
-import Etapa1 from '~/components/Cart/Step1.svelte';
-import Etapa2 from '~/components/Cart/Step2.svelte';
-import Etapa3 from '~/components/Cart/Step3.svelte';
-
-import { Icon } from 'astro-icon';
----
-
 <script>
+    import Step1 from '~/components/Cart/Step1.svelte';
+    import Step2 from '~/components/Cart/Step2.svelte';
+    import Step3 from '~/components/Cart/Step3.svelte';
+
     import { openModal, closeModal } from '@/components/Cart/logic';
     // seleciona todos os botões com a classe abrir
-    const btnAbrirModal = document.querySelectorAll('button.abrir');
-    btnAbrirModal.forEach((button) => {
-        button.addEventListener('click', () => {
-            openModal();
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        const btnAbrirModal = document.querySelectorAll('button.abrir');
+        btnAbrirModal.forEach((button) => {
+            button.addEventListener('click', () => {
+                openModal();
+            });
+        });
+        // seleciona todos os botões com a classe fechar
+        const btnFecharModal = document.querySelectorAll('button.fechar');
+        btnFecharModal.forEach((button) => {
+            button.addEventListener('click', () => {
+                closeModal();
+            });
         });
     });
-    // seleciona todos os botões com a classe fechar
-    const btnFecharModal = document.querySelectorAll('button.fechar');
-    btnFecharModal.forEach((button) => {
-        button.addEventListener('click', () => {
-            closeModal();
-        });
-    });
+
+    let step = 1;
 </script>
+
 <!-- Botão para abrir o carrinho -->
-<button class="abrir btn">Meu Carrinho<Icon class="h-6 w-6" name="mdi:cart" /></button>
+<button class="abrir btn">Meu Carrinho</button>
 <!-- MODAL: -->
 <dialog id="meuCarrinho" class="modal">
     <div class="modal-box m-0 h-screen max-h-none w-full max-w-none rounded-none p-0">
@@ -53,16 +56,11 @@ import { Icon } from 'astro-icon';
             </div>
             <!--x-->
             <!-- Corpo do Modal que será ativado de acordo com o script abaixo -->
-            <Etapa1 client:load />
-            <Etapa2 client:load />
-            <Etapa3 client:load />
+           
+            <Step1 />
+            <Step2 />
+            <Step3 />
             <!--x-->
         </div>
     </div>
 </dialog>
-
-<style>
-    body.modal-open {
-        overflow: hidden;
-    }
-</style>
