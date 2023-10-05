@@ -1,4 +1,5 @@
 // Função chamada nos componentes Step*.svelte
+/*
 export function CarregarEtapa(proxEtapa: number) {
     for (let i = 1; i <= 3; i++) {
         // Ativa o layout da etapa 1, 2 e 3
@@ -20,7 +21,7 @@ export function CarregarEtapa(proxEtapa: number) {
             passoIndicador.classList.remove('step-primary');
         }
     }
-}
+}*/
 
 // Script pra fechar e abrir o modal, e remover o scroll do body
 export function openModal() {
