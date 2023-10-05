@@ -1,6 +1,7 @@
 <script>
-    export let showModal; // boolean
+    import { fade } from 'svelte/transition';
 
+    export let showModal; // boolean
     let dialog; // HTMLDialogElement
 
     $: if (dialog && showModal) dialog.showModal();
@@ -8,6 +9,7 @@
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
+    transition:fade={{ duration: 100 }}
     class="fixed mx-auto mt-0 w-full bg-white py-4"
     bind:this={dialog}
     on:close={() => (showModal = false)}
@@ -16,7 +18,16 @@
     <!-- svelte-ignore a11y-no-static-element-interactions -->
     <div on:click|stopPropagation>
         <!-- svelte-ignore a11y-autofocus -->
-        <button class="btn btn-warning absolute right-2 top-2" on:click={() => dialog.close()}>Fechar</button>
+        <button class="btn btn-circle btn-sm absolute right-4 top-4" on:click={() => dialog.close()}
+            ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                ><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg
+            >
+        </button>
         <slot name="header" />
         <slot />
         <hr />
