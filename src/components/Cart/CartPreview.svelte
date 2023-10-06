@@ -12,7 +12,8 @@
 
 {#if Object.values($cartItems).length}
     <aside class="" in:fade={{ duration: 300, delay: 200 }} out:fade={{ duration: 200 }}>
-        <div class="max-w mx-auto max-w-lg">
+        <div class="max-w mx-auto max-w-lg pt-10">
+            <hr>
             {#each Object.values($cartItems) as cartItem}
                 {#if cartItem.quantity > 0}
                     <div
@@ -45,7 +46,7 @@
             {/each}
             <div class="my-4 items-end self-end text-center text-gray-800">
                 <p class="">Subtotal: R${$cartSubTotal}</p>
-                <button on:click={openModal} class="abrir btn btn-primary btn-sm"
+                <button on:click={openModal} class="absolute left-4 top-4 abrir btn btn-primary btn-sm"
                     ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                         ><path
                             fill="currentColor"

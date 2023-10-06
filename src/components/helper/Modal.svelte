@@ -10,7 +10,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
     transition:fade={{ duration: 100 }}
-    class="fixed mx-auto mt-0 w-full bg-white py-4"
+    class="fixed mt-0 w-full bg-white "
     bind:this={dialog}
     on:close={() => (showModal = false)}
     on:click|self={() => dialog.close()}

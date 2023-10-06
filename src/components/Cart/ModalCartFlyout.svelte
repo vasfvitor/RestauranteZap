@@ -26,7 +26,7 @@
                 {#key qty}
                     <span
                         transition:slide={{ duration: 350, x: 0, y: 15, opacity: 0.3, easing: quintOut }}
-                        class="indicator-bottom badge indicator-item badge-secondary indicator-start">{qty}</span
+                        class="indicator-top badge indicator-item badge-secondary indicator-start">{qty}</span
                     >
                 {/key}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

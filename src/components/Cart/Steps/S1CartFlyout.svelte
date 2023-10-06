@@ -12,12 +12,12 @@
                 <div
                     in:fade={{ duration: 400 }}
                     out:fade={{ duration: 250 }}
-                    class=" my-4 flex w-full items-center text-start"
+                    class="my-4 flex w-full items-center text-start"
                 >
                     <img class="mask mask-squircle mx-4 h-12 w-12" src="/temp.png" alt={cartItem.name} />
 
-                    <div class=" grow text-start font-black">
-                        <p class="text-lg">{cartItem.name}</p>
+                    <div class="grow text-start font-black">
+                        <p class="lg:text-lg">{cartItem.name}</p>
                         <p class="text-sm font-normal text-yellow-500">
                             R${cartItem.price} | R${cartItem.totalPrice.toFixed(2)}
                         </p>
