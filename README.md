@@ -1,6 +1,6 @@
 ## Primeiro de tudo
 
-Astro é uma framework JS
+Astro é um framework JS
 
 O objetivo de usar ele é facilitar a edição e manutenção do código.
 
