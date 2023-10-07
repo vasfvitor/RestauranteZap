@@ -1,18 +1,14 @@
 ## Primeiro de tudo
 
-Pq usar Astro? O Astro é uma framework JS
+Astro é uma framework JS
 
 O objetivo de usar ele é facilitar a edição e manutenção do código.
 
-Exemplo: Olhando os arquivos fica fácil de localizar cada seção das página pois cada uma tem um arquivo próprio que ao final o Astro junta tudo pra formar o site final. O rodapé tem o arquivo `Footer.astro`, o cardápio `Cardapio.astro`.
-
-O Astro (assim como os framework javascript) automaticamente
-
-Olha o arquivo `/src/consts.ts`. Lá tem um objeto javasscript com todos os dados do restaurante. Lá eu consigo centralizar os dados dele num arquivo e importar em cada página.
+Exemplo: Olhando os arquivos fica fácil de localizar cada seção das página pois cada uma tem um arquivo próprio que ao final o Astro junta tudo pra formar o html/css/js final. O rodapé tem o arquivo `Footer.astro`, o cardápio `Cardapio.astro`.
 
 ## Estrutura do projeto
 
-Esses arquivos solto na raiz do projeto são apenas de configuração, nao precisa mexer neles. O site mesmo é na pasta /src
+Esses arquivos na raiz do projeto são de configuração, não precisa mexer neles. O site mesmo é na pasta /src
 
 na pasta:
 /src/components - fica os componentes
@@ -65,11 +61,19 @@ exemplo:
 
 No caso foi decisão pessoal, no curso o cara usa o Bootstrap e escreve CSS.
 
-O Tailwind facilita escrever o css sem precisar usar um arquivo .css. Não existe `btn` como existe no Bootstrap. O Tailwind é uma biblioteca de css utilitário; O Bootstrap é baseado em componentes.
+O Tailwind facilita escrever css sem precisar usar um arquivo .css. Não existe `btn` como existe no Bootstrap. O Tailwind é uma biblioteca de css utilitário; O Bootstrap é baseado em componentes.
 
 [Documentação Tailwind CSS](https://tailwindcss.com/docs/)
 
-Pra facilitar o processo acrescentei o DaisyUI que tem componentes prontos como teria no Bootstrap. Só visitar [esse link ](https://daisyui.com/components/?lang=pt) escolher o componente desejado, copiar o código, e colar num novo componente ou página astro. Daí customiza.
+Pra facilitar o processo acrescentei o DaisyUI que tem componentes prontos como teria no Bootstrap. Só visitar [esse link](https://daisyui.com/components/?lang=pt) escolher o componente desejado, copiar o código, e colar num novo componente ou página Astro. Daí customiza.
+
+
+## Svelte
+
+O Astro nativamente não armazena estados entre os componentes. Para isso [o recomendado](https://docs.astro.build/pt-br/core-concepts/sharing-state/) é utilzar a biblioteca Nano Stores juntamente com uma framework, seja React, Preact, Lit, Solid, Vue ou Svelte. 
+
+Escolhi Svelte porque eu queria aprender Svelte. No momento já tem mais linhas de Svelte do que Astro. Por isso a consideração de mover tudo para Svelte + Vite ou SvelteKit.
+
 
 # Astro Starter Kit: Minimal
 
