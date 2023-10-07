@@ -12,7 +12,10 @@ export const DADOS = {
         estado: 'Estado Exemplo',
         numero: '12345',
     },
-    telefone: '(21) 123 456 789',
+    telefone: {
+        format: '(21) 123 456 789',
+        text: '123779118123',
+    },
     social: {
         instagram: 'https://www.instagram.com/perfil',
         facebook: 'https://www.facebook.com/perfil/',
