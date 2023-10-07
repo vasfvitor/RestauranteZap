@@ -1,16 +1,23 @@
 <script>
+    // COMPONENTS
+    import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
+
     import S1CartFlyout from '~/components/Cart/Steps/S1CartFlyout.svelte';
     import S2CheckoutForm from '~/components/Cart/Steps/S2CheckoutForm.svelte';
     import S3CartSummary from '~/components/Cart/Steps/S3CartSummary.svelte';
-    import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
+
+    import CartTotal from '~/components/Cart/CartTotal.svelte';
+
+    // DATA
     import { cartQuantity } from '~/components/Cart/cartStore';
     import { cartItems } from '~/components/Cart/cartStore';
-    import { fade } from 'svelte/transition';
     import { DADOS } from '~/utils/consts';
+
+    // SVELTE
+    import { fade } from 'svelte/transition';
 
     let stepCart = 1;
     let isOverflowHidden = false;
-
     let qty = 0;
 
     cartQuantity.subscribe((newQty) => {
@@ -57,6 +64,7 @@
         Numero: '',
         Complemento: '',
     };
+
     function GetAddress() {
         const text = `CEP: ${formData.CEP} \nEndereço: ${formData.Endereco}, ${formData.Numero}. ${formData.Bairro} - ${formData.Cidade}\n${formData.Complemento}`;
         //console.log(text);
@@ -64,22 +72,13 @@
     }
 
     function Checkout() {
-        let order = GetOrder();
-        let total = '';
-        let message = '';
-        let address = GetAddress();
-        message = message + '\n';
-
-        message = `Olá, meu pedido é: \n${order}\n${address}\nTotal: ${total}`;
-        let waLink = `https\://wa.me/55${DADOS.telefone.text}/?text=${message}`;
+        const order = GetOrder();
+        const address = GetAddress();
+        const total = '';
+        const message = `Olá, meu pedido é: \n${order}\n${address}\nTotal: ${total}`;
+        const waLink = `https\://wa.me/55${DADOS.telefone.text}/?text=${message}`;
         const encoded = encodeURI(waLink);
-        console.log(waLink);
-        console.log(encoded);
-    }
-
-    function HandleOrder() {
-        //GetAddress();
-        LoadStep(3);
+        window.location.href = encoded;
     }
 </script>
 
@@ -93,7 +92,6 @@
                 class="badge indicator-item indicator-start indicator-top">{qty}</span
             >
         {/key}
-
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
             ><path
                 fill="currentColor"
@@ -131,22 +129,33 @@
                     </div>
                 </div>
             </div>
-            <!--x-->
-
             {#if stepCart === 1}
                 <StepWrapper ID="etapa1" title="Meu carrinho:" {LoadStep}>
                     <S1CartFlyout />
+                    <CartTotal />
+                    <div class="flex justify-end gap-4">
+                        <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
+                    </div>
                 </StepWrapper>
             {:else if stepCart === 2}
-                <StepWrapper ID="etapa2" title="Endereço de entrega:" {LoadStep} {HandleOrder}>
+                <StepWrapper ID="etapa2" title="Endereço de entrega:">
                     <S2CheckoutForm {GetAddress} {formData} />
+                    <CartTotal />
+                    <div class="flex justify-end gap-4">
+                        <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
+                        <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
+                    </div>
                 </StepWrapper>
             {:else if stepCart === 3}
                 <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep} {Checkout}>
                     <S3CartSummary />
+                    <CartTotal />
+                    <div class="flex justify-end gap-4">
+                        <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
+                        <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
+                    </div>
                 </StepWrapper>
             {/if}
-            <!--x-->
         </div>
     </div>
 </dialog>

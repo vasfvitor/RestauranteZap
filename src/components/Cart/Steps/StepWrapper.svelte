@@ -1,9 +1,7 @@
 <script>
     import { fade } from 'svelte/transition';
 
-    import CartTotal from '~/components/Cart/CartTotal.svelte';
-
-    export let ID, title, LoadStep, Checkout, HandleOrder; // props
+    export let ID, title; // props
 </script>
 
 <section
@@ -17,22 +15,5 @@
             <h2>{title}</h2>
         </div>
         <slot />
-        <CartTotal />
-
-        {#if ID === 'etapa1'}
-            <div class="flex justify-end gap-4">
-                <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
-            </div>
-        {:else if ID === 'etapa2'}
-            <div class="flex justify-end gap-4">
-                <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
-                <button on:click={() => HandleOrder()} class="btn btn-primary">Revisar pedido</button>
-            </div>
-        {:else if ID === 'etapa3'}
-            <div class="flex justify-end gap-4">
-                <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
-                <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
-            </div>
-        {/if}
     </div>
 </section>
