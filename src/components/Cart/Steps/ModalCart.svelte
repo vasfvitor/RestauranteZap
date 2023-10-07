@@ -4,7 +4,9 @@
     import S3CartSummary from '~/components/Cart/Steps/S3CartSummary.svelte';
     import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
     import { cartQuantity } from '~/components/Cart/cartStore';
+    import { cartItems } from '~/components/Cart/cartStore';
     import { fade } from 'svelte/transition';
+    import { DADOS } from '~/utils/consts';
 
     let stepCart = 1;
     let isOverflowHidden = false;
@@ -29,6 +31,55 @@
             isOverflowHidden = false;
         }, 400);
         stepCart = step;
+    }
+
+    function GetOrder() {
+        const currItem = cartItems.get();
+        let order = '';
+        for (const key in currItem) {
+            if (currItem.hasOwnProperty(key)) {
+                const cartItem = currItem[key];
+                const quantity = cartItem.quantity;
+                if (quantity > 0) {
+                    const itemName = cartItem.name;
+                    order = order + `${itemName} x ${quantity} \n`;
+                }
+            }
+        }
+        return order;
+    }
+
+    let formData = {
+        CEP: '',
+        Endereco: '',
+        Bairro: '',
+        Cidade: '',
+        Numero: '',
+        Complemento: '',
+    };
+    function GetAddress() {
+        const text = `CEP: ${formData.CEP} \nEndereço: ${formData.Endereco}, ${formData.Numero}. ${formData.Bairro} - ${formData.Cidade}\n${formData.Complemento}`;
+        //console.log(text);
+        return text;
+    }
+
+    function Checkout() {
+        let order = GetOrder();
+        let total = '';
+        let message = '';
+        let address = GetAddress();
+        message = message + '\n';
+
+        message = `Olá, meu pedido é: \n${order}\n${address}\nTotal: ${total}`;
+        let waLink = `https\://wa.me/55${DADOS.telefone.text}/?text=${message}`;
+        const encoded = encodeURI(waLink);
+        console.log(waLink);
+        console.log(encoded);
+    }
+
+    function HandleOrder() {
+        //GetAddress();
+        LoadStep(3);
     }
 </script>
 
@@ -68,9 +119,9 @@
                         <li id="passo3" class="step" class:step-primary={stepCart == 3}></li>
                     </ul>
                     <div class="mx-auto mb-8 md:m-0">
-                        <form method="dialog" >
+                        <form method="dialog">
                             <!-- Fechar o modal (carrinho)-->
-                           
+
                             <button on:click={closeModal} class="fechar btn">Fechar</button>
                         </form>
                         <!-- Fechar com botão ESC -->
@@ -87,11 +138,11 @@
                     <S1CartFlyout />
                 </StepWrapper>
             {:else if stepCart === 2}
-                <StepWrapper ID="etapa2" title="Endereço de entrega:" {LoadStep}>
-                    <S2CheckoutForm />
+                <StepWrapper ID="etapa2" title="Endereço de entrega:" {LoadStep} {HandleOrder}>
+                    <S2CheckoutForm {GetAddress} {formData} />
                 </StepWrapper>
             {:else if stepCart === 3}
-                <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep}>
+                <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep} {Checkout}>
                     <S3CartSummary />
                 </StepWrapper>
             {/if}

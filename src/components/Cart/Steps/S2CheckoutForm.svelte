@@ -1,4 +1,5 @@
 <script>
+    export let formData;
 </script>
 
 <form action="" class="container grid grid-flow-col grid-rows-6 gap-4 md:grid-rows-3">
@@ -6,45 +7,81 @@
         <label for="cep" class="label">
             <span class="label-text">CEP:</span>
         </label>
-        <input id="cep" type="text" placeholder="CEP" class="input input-bordered w-full max-w-xs" />
+        <input
+            bind:value={formData.CEP}
+            id="cep"
+            type="text"
+            placeholder="CEP"
+            class="input input-bordered w-full max-w-xs"
+        />
     </div>
 
     <div class="w-full max-w-xs">
         <label for="endereco" class="label">
             <span class="label-text">Endereço:</span>
         </label>
-        <input id="endereco" type="text" placeholder="Endereço" class="input input-bordered w-full max-w-xs" />
+        <input
+            bind:value={formData.Endereco}
+            id="endereco"
+            type="text"
+            placeholder="Endereço"
+            class="input input-bordered w-full max-w-xs"
+        />
     </div>
     <div class="w-full max-w-xs">
         <label for="bairro" class="label">
             <span class="label-text">Bairro:</span>
         </label>
-        <input id="bairro" type="text" placeholder="Bairro" class="input input-bordered w-full max-w-xs" />
+        <input
+            bind:value={formData.Bairro}
+            id="bairro"
+            type="text"
+            placeholder="Bairro"
+            class="input input-bordered w-full max-w-xs"
+        />
     </div>
     <div class="w-full max-w-xs">
         <label for="numero" class="label">
             <span class="label-text">Número (Nº):</span>
         </label>
-        <input id="numero" type="text" placeholder="Número" class="input input-bordered w-full max-w-xs" />
+        <input
+            bind:value={formData.Numero}
+            id="numero"
+            type="text"
+            placeholder="Número"
+            class="input input-bordered w-full max-w-xs"
+        />
     </div>
 
     <div class="w-full max-w-xs">
         <label for="cidade" class="label">
             <span class="label-text">Cidade:</span>
         </label>
-        <input id="cidade" type="text" placeholder="Cidade" class="input input-bordered w-full max-w-xs" />
+        <input
+            bind:value={formData.Cidade}
+            id="cidade"
+            type="text"
+            placeholder="Cidade"
+            class="input input-bordered w-full max-w-xs"
+        />
     </div>
     <div class="w-full max-w-xs">
         <label for="complemento" class="label">
             <span class="label-text">Complemento:</span>
         </label>
-        <input id="complemento" type="text" placeholder="Complemento" class="input input-bordered w-full max-w-xs" />
+        <input
+            bind:value={formData.Complemento}
+            id="complemento"
+            type="text"
+            placeholder="Complemento"
+            class="input input-bordered w-full max-w-xs"
+        />
 
-        <div class="disabled hidden w-full max-w-xs">
+        <div aria-disabled="true" disabled class="disabled hidden w-full max-w-xs">
             <label for="uf" class="label">
                 <span class="label-text">UF</span>
             </label>
-            <select id="uf" class="select select-bordered">
+            <select disabled id="uf" class="disabled select select-bordered">
                 <option value="AC">AC</option>
                 <option value="AL">AL</option>
                 <option value="AP">AP</option>
