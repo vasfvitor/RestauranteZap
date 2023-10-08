@@ -20,19 +20,13 @@
     import { fade } from 'svelte/transition';
 
     let stepCart = 1;
-
     let qty = 0;
 
     cartQuantity.subscribe((newQty) => {
         qty = newQty;
     });
 
-    let isOverflowHidden = false;
     function LoadStep(step) {
-        isOverflowHidden = true;
-        setTimeout(() => {
-            isOverflowHidden = false;
-        }, 800);
         stepCart = step;
     }
 
@@ -98,8 +92,9 @@
 </div>
 <!-- MODAL: -->
 <Modal isFullScreen={true} bind:showModal id="modal_cart">
-    <div class="container h-screen bg-white py-8">
+    <div class="parent container h-full py-8">
         <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
+
         <div class="flex flex-col-reverse text-center md:flex-row md:justify-between">
             <ul class="steps">
                 <!-- Passos step-primary -->
@@ -112,29 +107,36 @@
         {#if stepCart === 1}
             <StepWrapper ID="etapa1" title="Meu carrinho:">
                 <S1CartFlyout />
-                <CartTotal />
-                <div class="flex justify-end gap-4">
-                    <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
-                </div>
             </StepWrapper>
+            <div class="gap-4 text-center">
+                <CartTotal />
+                <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
+            </div>
         {:else if stepCart === 2}
             <StepWrapper ID="etapa2" title="Endereço de entrega:">
-                <S2CheckoutForm {GetAddress} {formData} />
-                <CartTotal />
-                <div class="flex justify-end gap-4">
-                    <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
-                    <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
-                </div>
+                <S2CheckoutForm {formData} />
             </StepWrapper>
+            <div class=" gap-4 text-center">
+                <CartTotal />
+                <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
+                <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
+            </div>
         {:else if stepCart === 3}
             <StepWrapper ID="etapa3" title="Resumo do pedido:" {Checkout}>
                 <S3CartSummary />
-                <CartTotal />
-                <div class="flex justify-end gap-4">
-                    <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
-                    <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
-                </div>
             </StepWrapper>
+            <div class=" gap-4 text-center">
+                <CartTotal />
+                <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
+                <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
+            </div>
         {/if}
     </div>
 </Modal>
+
+<style>
+    .parent {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+</style>

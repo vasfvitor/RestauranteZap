@@ -21,6 +21,12 @@
             document.body.classList.remove('overflow-y-hidden');
         }
     }*/
+    let classes: string;
+    if (isFullScreen) {
+        classes = 'h-screen w-full rounded-none';
+    } else {
+        classes = 'max-w-screen-lg';
+    }
 </script>
 
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
@@ -36,9 +42,7 @@
     <div
         class:modal-open={showModal}
         class:overflow-hidden={showModal}
-        class:h-screen={isFullScreen}
-        class:w-full={isFullScreen}
-        class="modal-box m-0 max-h-none max-w-none rounded-none p-0"
+        class={`modal-box m-0 max-h-none max-w-none p-0 ${classes}`}
         on:click|stopPropagation
     >
         <!-- svelte-ignore a11y-autofocus -->
