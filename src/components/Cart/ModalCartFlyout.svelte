@@ -1,10 +1,10 @@
 <script>
     import CartPreview from '~/components/Cart/CartPreview.svelte';
     import { cartQuantity } from '~/components/Cart/cartStore';
-    import Modal from '~/components/helper/Modal.svelte';
     import { quintOut } from 'svelte/easing';
     import { slide, fade } from 'svelte/transition';
 
+    import Modal from '~/components/helper/Modal.svelte';
     let showModal = false;
 
     let qty = 0;
@@ -26,7 +26,7 @@
                 {#key qty}
                     <span
                         transition:slide={{ duration: 350, x: 0, y: 15, opacity: 0.3, easing: quintOut }}
-                        class="indicator-top badge indicator-item badge-secondary indicator-start">{qty}</span
+                        class="badge indicator-item badge-secondary indicator-start indicator-top">{qty}</span
                     >
                 {/key}
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -39,7 +39,7 @@
         </div>
     </div>
 
-    <Modal bind:showModal>
+    <Modal isFullScreen={false} bind:showModal>
         <CartPreview />
     </Modal>
 {:else}

@@ -2,21 +2,46 @@
     import { fade } from 'svelte/transition';
 
     export let showModal; // boolean
+
     let dialog; // HTMLDialogElement
 
-    $: if (dialog && showModal) dialog.showModal();
+    $: {
+        if (dialog && showModal) {
+            dialog.showModal();
+        }
+    }
+
+    function checkOverflow() {
+        if (dialog && showModal) {
+            console.log('add');
+            document.body.classList.add('modal-open');
+            //document.body.classList.add('overflow-y-hidden');
+        } else {
+            console.log('remove');
+            document.body.classList.remove('modal-open');
+        }
+    }
+    export let isFullScreen;
 </script>
 
+<svelte:body on:click={checkOverflow} />
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
     transition:fade={{ duration: 100 }}
-    class="fixed mt-0 w-full bg-white "
+    class="modal"
     bind:this={dialog}
     on:close={() => (showModal = false)}
     on:click|self={() => dialog.close()}
 >
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div on:click|stopPropagation>
+    <div
+        class:modal-open={showModal}
+        class:overflow-hidden={showModal}
+        class:h-screen={isFullScreen}
+        class:w-full={isFullScreen}
+        class="modal-box m-0 max-h-none max-w-none rounded-none p-0"
+        on:click|stopPropagation
+    >
         <!-- svelte-ignore a11y-autofocus -->
         <button class="btn btn-circle btn-sm absolute right-4 top-4" on:click={() => dialog.close()}
             ><svg
@@ -30,11 +55,14 @@
         </button>
         <slot name="header" />
         <slot />
-        <hr />
     </div>
 </dialog>
 
 <style>
+    :global(body:has(dialog[open])) {
+        overflow-y: hidden;
+    }
+
     dialog::backdrop {
         background: rgba(0, 0, 0, 0.3);
     }

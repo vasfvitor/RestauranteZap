@@ -1,4 +1,7 @@
 <script>
+    import Modal from '~/components/helper/Modal.svelte';
+    let showModal = false;
+
     // COMPONENTS
     import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
 
@@ -24,19 +27,11 @@
         qty = newQty;
     });
 
-    function openModal() {
-        document.getElementById('meuCarrinho').showModal();
-        document.body.classList.add('modal-open');
-    }
-    function closeModal() {
-        document.body.classList.remove('modal-open');
-    }
-
     function LoadStep(step) {
         isOverflowHidden = true;
         setTimeout(() => {
             isOverflowHidden = false;
-        }, 400);
+        }, 800);
         stepCart = step;
     }
 
@@ -83,8 +78,8 @@
 </script>
 
 <!-- Botão para abrir o carrinho -->
-<div class="indicator">
-    <button on:click={openModal} class="abrir btn">
+<div transition:fade={{ duration: 100 }} class="indicator">
+    <button on:click={() => (showModal = true)} class="btn">
         {#key qty}
             <span
                 class:badge-primary={qty > 0}
@@ -101,61 +96,45 @@
     >
 </div>
 <!-- MODAL: -->
-<dialog id="meuCarrinho" class="modal">
-    <div
-        class="modal-box m-0 h-screen max-h-none w-full max-w-none rounded-none p-0"
-        class:overflow-hidden={isOverflowHidden}
-    >
-        <div class="container py-8">
-            <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
-            <div>
-                <div class="flex flex-col-reverse text-center md:flex-row md:justify-between">
-                    <ul class="steps">
-                        <!-- Passos step-primary -->
-                        <li id="passo1" class="step step-primary"></li>
-                        <li id="passo2" class="step" class:step-primary={stepCart == 2 || stepCart == 3}></li>
-                        <li id="passo3" class="step" class:step-primary={stepCart == 3}></li>
-                    </ul>
-                    <div class="mx-auto mb-8 md:m-0">
-                        <form method="dialog">
-                            <!-- Fechar o modal (carrinho)-->
-
-                            <button on:click={closeModal} class="fechar btn">Fechar</button>
-                        </form>
-                        <!-- Fechar com botão ESC -->
-                        <form method="dialog" class="modal-backdrop">
-                            <button>close</button>
-                        </form>
-                    </div>
-                </div>
+<Modal isFullScreen={true} bind:showModal>
+    <div class="container h-screen bg-white py-8">
+        <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
+        <div>
+            <div class="flex flex-col-reverse text-center md:flex-row md:justify-between">
+                <ul class="steps">
+                    <!-- Passos step-primary -->
+                    <li id="passo1" class="step step-primary"></li>
+                    <li id="passo2" class="step" class:step-primary={stepCart == 2 || stepCart == 3}></li>
+                    <li id="passo3" class="step" class:step-primary={stepCart == 3}></li>
+                </ul>
             </div>
-            {#if stepCart === 1}
-                <StepWrapper ID="etapa1" title="Meu carrinho:" {LoadStep}>
-                    <S1CartFlyout />
-                    <CartTotal />
-                    <div class="flex justify-end gap-4">
-                        <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
-                    </div>
-                </StepWrapper>
-            {:else if stepCart === 2}
-                <StepWrapper ID="etapa2" title="Endereço de entrega:">
-                    <S2CheckoutForm {GetAddress} {formData} />
-                    <CartTotal />
-                    <div class="flex justify-end gap-4">
-                        <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
-                        <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
-                    </div>
-                </StepWrapper>
-            {:else if stepCart === 3}
-                <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep} {Checkout}>
-                    <S3CartSummary />
-                    <CartTotal />
-                    <div class="flex justify-end gap-4">
-                        <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
-                        <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
-                    </div>
-                </StepWrapper>
-            {/if}
         </div>
+        {#if stepCart === 1}
+            <StepWrapper ID="etapa1" title="Meu carrinho:" {LoadStep}>
+                <S1CartFlyout />
+                <CartTotal />
+                <div class="flex justify-end gap-4">
+                    <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
+                </div>
+            </StepWrapper>
+        {:else if stepCart === 2}
+            <StepWrapper ID="etapa2" title="Endereço de entrega:">
+                <S2CheckoutForm {GetAddress} {formData} />
+                <CartTotal />
+                <div class="flex justify-end gap-4">
+                    <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
+                    <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
+                </div>
+            </StepWrapper>
+        {:else if stepCart === 3}
+            <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep} {Checkout}>
+                <S3CartSummary />
+                <CartTotal />
+                <div class="flex justify-end gap-4">
+                    <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
+                    <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
+                </div>
+            </StepWrapper>
+        {/if}
     </div>
-</dialog>
+</Modal>
