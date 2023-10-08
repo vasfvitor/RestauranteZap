@@ -5,3 +5,9 @@ body {
 body.modal-open {
     overflow: hidden;
 }
+
+/*
+body dialog[open] {
+    overflow: hidden;
+}
+*/

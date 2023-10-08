@@ -1,35 +1,32 @@
 <script>
+    import Modal from '~/components/helper/Modal.svelte';
+    let showModal = false;
+
+    // COMPONENTS
+    import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
+
     import S1CartFlyout from '~/components/Cart/Steps/S1CartFlyout.svelte';
     import S2CheckoutForm from '~/components/Cart/Steps/S2CheckoutForm.svelte';
     import S3CartSummary from '~/components/Cart/Steps/S3CartSummary.svelte';
-    import StepWrapper from '~/components/Cart/Steps/StepWrapper.svelte';
+
+    import CartTotal from '~/components/Cart/CartTotal.svelte';
+
+    // DATA
     import { cartQuantity } from '~/components/Cart/cartStore';
     import { cartItems } from '~/components/Cart/cartStore';
-    import { fade } from 'svelte/transition';
     import { DADOS } from '~/utils/consts';
 
-    let stepCart = 1;
-    let isOverflowHidden = false;
+    // SVELTE
+    import { fade } from 'svelte/transition';
 
+    let stepCart = 1;
     let qty = 0;
 
     cartQuantity.subscribe((newQty) => {
         qty = newQty;
     });
 
-    function openModal() {
-        document.getElementById('meuCarrinho').showModal();
-        document.body.classList.add('modal-open');
-    }
-    function closeModal() {
-        document.body.classList.remove('modal-open');
-    }
-
     function LoadStep(step) {
-        isOverflowHidden = true;
-        setTimeout(() => {
-            isOverflowHidden = false;
-        }, 400);
         stepCart = step;
     }
 
@@ -57,6 +54,7 @@
         Numero: '',
         Complemento: '',
     };
+
     function GetAddress() {
         const text = `CEP: ${formData.CEP} \nEndereço: ${formData.Endereco}, ${formData.Numero}. ${formData.Bairro} - ${formData.Cidade}\n${formData.Complemento}`;
         //console.log(text);
@@ -64,28 +62,19 @@
     }
 
     function Checkout() {
-        let order = GetOrder();
-        let total = '';
-        let message = '';
-        let address = GetAddress();
-        message = message + '\n';
-
-        message = `Olá, meu pedido é: \n${order}\n${address}\nTotal: ${total}`;
-        let waLink = `https\://wa.me/55${DADOS.telefone.text}/?text=${message}`;
+        const order = GetOrder();
+        const address = GetAddress();
+        const total = '';
+        const message = `Olá, meu pedido é: \n${order}\n${address}\nTotal: ${total}`;
+        const waLink = `https\://wa.me/55${DADOS.telefone.text}/?text=${message}`;
         const encoded = encodeURI(waLink);
-        console.log(waLink);
-        console.log(encoded);
-    }
-
-    function HandleOrder() {
-        //GetAddress();
-        LoadStep(3);
+        window.location.href = encoded;
     }
 </script>
 
 <!-- Botão para abrir o carrinho -->
-<div class="indicator">
-    <button on:click={openModal} class="abrir btn">
+<div transition:fade={{ duration: 100 }} class="indicator">
+    <button class="btn" on:click={() => (showModal = true)}>
         {#key qty}
             <span
                 class:badge-primary={qty > 0}
@@ -93,7 +82,6 @@
                 class="badge indicator-item indicator-start indicator-top">{qty}</span
             >
         {/key}
-
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
             ><path
                 fill="currentColor"
@@ -103,50 +91,52 @@
     >
 </div>
 <!-- MODAL: -->
-<dialog id="meuCarrinho" class="modal">
-    <div
-        class="modal-box m-0 h-screen max-h-none w-full max-w-none rounded-none p-0"
-        class:overflow-hidden={isOverflowHidden}
-    >
-        <div class="container py-8">
-            <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
-            <div>
-                <div class="flex flex-col-reverse text-center md:flex-row md:justify-between">
-                    <ul class="steps">
-                        <!-- Passos step-primary -->
-                        <li id="passo1" class="step step-primary"></li>
-                        <li id="passo2" class="step" class:step-primary={stepCart == 2 || stepCart == 3}></li>
-                        <li id="passo3" class="step" class:step-primary={stepCart == 3}></li>
-                    </ul>
-                    <div class="mx-auto mb-8 md:m-0">
-                        <form method="dialog">
-                            <!-- Fechar o modal (carrinho)-->
+<Modal isFullScreen={true} bind:showModal id="modal_cart">
+    <div class="parent container h-full py-8">
+        <!-- Cabeçalho do carrinho onde mostra os passos e o botão de fechar -->
 
-                            <button on:click={closeModal} class="fechar btn">Fechar</button>
-                        </form>
-                        <!-- Fechar com botão ESC -->
-                        <form method="dialog" class="modal-backdrop">
-                            <button>close</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <!--x-->
-
-            {#if stepCart === 1}
-                <StepWrapper ID="etapa1" title="Meu carrinho:" {LoadStep}>
-                    <S1CartFlyout />
-                </StepWrapper>
-            {:else if stepCart === 2}
-                <StepWrapper ID="etapa2" title="Endereço de entrega:" {LoadStep} {HandleOrder}>
-                    <S2CheckoutForm {GetAddress} {formData} />
-                </StepWrapper>
-            {:else if stepCart === 3}
-                <StepWrapper ID="etapa3" title="Resumo do pedido:" {LoadStep} {Checkout}>
-                    <S3CartSummary />
-                </StepWrapper>
-            {/if}
-            <!--x-->
+        <div class="flex flex-col-reverse text-center md:flex-row md:justify-between">
+            <ul class="steps">
+                <!-- Passos step-primary -->
+                <li id="passo1" class="step step-primary"></li>
+                <li id="passo2" class="step" class:step-primary={stepCart == 2 || stepCart == 3}></li>
+                <li id="passo3" class="step" class:step-primary={stepCart == 3}></li>
+            </ul>
         </div>
+
+        {#if stepCart === 1}
+            <StepWrapper ID="etapa1" title="Meu carrinho:">
+                <S1CartFlyout />
+            </StepWrapper>
+            <div class="gap-4 text-center">
+                <CartTotal />
+                <button on:click={() => LoadStep(2)} class="btn btn-primary">Continuar</button>
+            </div>
+        {:else if stepCart === 2}
+            <StepWrapper ID="etapa2" title="Endereço de entrega:">
+                <S2CheckoutForm {formData} />
+            </StepWrapper>
+            <div class=" gap-4 text-center">
+                <CartTotal />
+                <button on:click={() => LoadStep(1)} class="btn">Voltar</button>
+                <button on:click={() => LoadStep(3)} class="btn btn-primary">Revisar pedido</button>
+            </div>
+        {:else if stepCart === 3}
+            <StepWrapper ID="etapa3" title="Resumo do pedido:" {Checkout}>
+                <S3CartSummary />
+            </StepWrapper>
+            <div class=" gap-4 text-center">
+                <CartTotal />
+                <button on:click={() => LoadStep(2)} class="btn">Voltar</button>
+                <button on:click={() => Checkout()} class="btn btn-primary">Finalizar</button>
+            </div>
+        {/if}
     </div>
-</dialog>
+</Modal>
+
+<style>
+    .parent {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+    }
+</style>
