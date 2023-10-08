@@ -6,7 +6,7 @@
 </script>
 
 {#if Object.values($cartItems).length}
-    <div class="mx-auto grow w-full">
+    <div class="mx-auto w-full">
         {#each Object.values($cartItems) as cartItem}
             {#if cartItem.quantity > 0}
                 <div
