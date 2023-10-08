@@ -1,34 +1,33 @@
-<script>
+<script lang="ts">
     import { fade } from 'svelte/transition';
-
-    export let showModal; // boolean
-
-    let dialog; // HTMLDialogElement
+    export let showModal: boolean, id: string, isFullScreen: boolean;
+    let dialog: HTMLDialogElement;
 
     $: {
         if (dialog && showModal) {
             dialog.showModal();
         }
     }
-
-    function checkOverflow() {
+    /*
+<svelte:body on:visibilitychange={CheckOverflow} />
+    function CheckOverflow() {
         if (dialog && showModal) {
             console.log('add');
-            document.body.classList.add('modal-open');
-            //document.body.classList.add('overflow-y-hidden');
+            //document.body.classList.add('modal-open');
+            document.body.classList.add('overflow-y-hidden');
         } else {
             console.log('remove');
-            document.body.classList.remove('modal-open');
+            //document.body.classList.remove('modal-open');
+            document.body.classList.remove('overflow-y-hidden');
         }
-    }
-    export let isFullScreen;
+    }*/
 </script>
 
-<svelte:body on:click={checkOverflow} />
 <!-- svelte-ignore a11y-click-events-have-key-events a11y-no-noninteractive-element-interactions -->
 <dialog
     transition:fade={{ duration: 100 }}
     class="modal"
+    {id}
     bind:this={dialog}
     on:close={() => (showModal = false)}
     on:click|self={() => dialog.close()}
@@ -59,10 +58,6 @@
 </dialog>
 
 <style>
-    :global(body:has(dialog[open])) {
-        overflow-y: hidden;
-    }
-
     dialog::backdrop {
         background: rgba(0, 0, 0, 0.3);
     }
