@@ -15,4 +15,41 @@ import Servicos from '~/components/MainPage/Servicos.astro';
         <Cardapio />
         <Servicos />
     </main>
+    <script>
+        import { GrowthBook } from '@growthbook/growthbook';
+
+        const growthbook = new GrowthBook({
+            apiHost: 'https://cdn.growthbook.io',
+
+            clientKey: 'sdk-DLj0FI0RrJCt6LNU',
+
+            enableDevMode: true,
+
+            subscribeToChanges: true,
+
+            trackingCallback: (experiment, result) => {
+                // TODO: Use your real analytics tracking system
+
+                console.log('Viewed Experiment', {
+                    experimentId: experiment.key,
+
+                    variationId: result.key,
+                });
+            },
+        });
+
+        // Wait for features to be available
+
+        await growthbook.loadFeatures();
+        if (growthbook.isOn('my-feature')) {
+            console.log('Feature is enabled!');
+        }
+        const value = growthbook.getFeatureValue(
+            'my-feature',
+
+            'fallback'
+        );
+
+        console.log(value);
+    </script>
 </Layout>
