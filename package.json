@@ -19,6 +19,7 @@
         "@fontsource/poppins": "^5.0.8",
         "@nanostores/persistent": "^0.9.1",
         "astro": "^3.3.2",
+        "flagsmith": "^3.20.0",
         "sharp": "^0.32.6",
         "statsig-js": "^4.40.1",
         "svelte": "^4.2.2",

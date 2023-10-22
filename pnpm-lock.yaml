@@ -23,6 +23,9 @@ dependencies:
   astro:
     specifier: ^3.3.2
     version: 3.3.2(typescript@5.2.2)
+  flagsmith:
+    specifier: ^3.20.0
+    version: 3.20.0
   sharp:
     specifier: ^0.32.6
     version: 0.32.6
@@ -1700,6 +1703,10 @@ packages:
     dependencies:
       micromatch: 4.0.5
       pkg-dir: 4.2.0
+    dev: false
+
+  /flagsmith@3.20.0:
+    resolution: {integrity: sha512-qrEeeUtw8WJNVcPi5pUh3F6lvPZWyTfYWc7O41skpjeq3HQF6I8uv7D87N+yryZNH9L4ZbVYYE1y5Xg9F62Jlw==}
     dev: false
 
   /fraction.js@4.3.7:

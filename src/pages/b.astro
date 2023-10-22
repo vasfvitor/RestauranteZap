@@ -11,5 +11,16 @@ import Layout from '~/layout/PageLayout.astro';
         <div id="submit_button">
             <input class="rounded bg-gray-500 px-8 py-4 shadow" type="submit" value="Flagsmith Quickstart Button!" />
         </div>
+        <script>
+            const body = document.querySelector('body');
+            const experiments = body.getAttribute('data-experiments').split(' ');
+
+            if (experiments.includes('big-button')) {
+                console.log('big-button')
+                // Execute code for the "big-button" experiment
+            } else {
+                console.log(experiments)
+            }
+        </script>
     </main>
 </Layout>
