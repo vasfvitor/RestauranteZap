@@ -8,7 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://20fe7ca0.restaurantezap.pages.dev',
+    site: 'https://test-growthbook.restaurantezap.pages.dev/',
 
     integrations: [
         tailwind(),
@@ -24,5 +24,9 @@ export default defineConfig({
                 '~': path.resolve(__dirname, './src'),
             },
         },
+    },
+
+    build: {
+        assetsPrefix: 'https://test-growthbook.restaurantezap.pages.dev',
     },
 });
