@@ -1,22 +1,11 @@
 ---
-import '@fontsource/poppins/200.css';
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/700.css';
-import '@fontsource/poppins/900.css';
-
-import 'animate.css';
 
 import Head from '~/layout/Head.astro';
-import Footer from '~/layout/Footer.astro';
-
-import ModalCartFlyout from '~/components/Cart/ModalCartFlyout.svelte';
 ---
 
 <html lang="pt-br" class="scroll-smooth bg-orange-50">
     <Head />
-    <body transition:animate="fade">
+    <body>
         <slot />
-        <Footer />
-        <ModalCartFlyout client:idle />
     </body>
 </html>

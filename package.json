@@ -18,19 +18,14 @@
         "@astrojs/tailwind": "^5.0.2",
         "@fontsource/poppins": "^5.0.8",
         "@nanostores/persistent": "^0.9.1",
-        "animate.css": "^4.1.1",
         "astro": "^3.3.2",
-        "nanostores": "^0.9.4",
         "sharp": "^0.32.6",
         "statsig-js": "^4.40.1",
         "svelte": "^4.2.2",
-        "tailwindcss": "^3.3.3",
-        "unpic": "^3.10.1"
+        "tailwindcss": "^3.3.3"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.10",
-        "astro-icon": "^0.8.1",
-        "daisyui": "^3.9.3",
         "prettier": "^3.0.3",
         "prettier-plugin-astro": "^0.12.0",
         "prettier-plugin-svelte": "^3.0.3",

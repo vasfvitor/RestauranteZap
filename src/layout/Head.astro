@@ -1,12 +1,10 @@
 ---
 import { SITE_TITLE } from '~/utils/consts';
 import '@fontsource/poppins/200.css';
-import '@fontsource/poppins/300.css';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/700.css';
 import '@fontsource/poppins/900.css';
 
-import { ViewTransitions } from 'astro:transitions';
 import '~/styles/global.css';
 ---
 
@@ -14,7 +12,5 @@ import '~/styles/global.css';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
     <title>{SITE_TITLE}</title>
-    <ViewTransitions />
 </head>
